@@ -1,0 +1,19 @@
+#welcome {
+    text-align: center;
+    font-family: Tahoma;
+}
+
+main p{
+    padding-left: 1vw;
+    font-family: arial;
+}
+
+main img {
+    padding-left: 5vw;
+}
+
+
+main h2, ul, li {
+    text-align: center;
+    font-family: arial;
+}
