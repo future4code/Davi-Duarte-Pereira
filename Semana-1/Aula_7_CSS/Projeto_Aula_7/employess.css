@@ -15,3 +15,11 @@ main p {
 table {
     margin: 0 auto;
 }
+
+a:link {
+    color: #FF512F;
+}
+
+a:visited {
+    color: #02AABD;
+}

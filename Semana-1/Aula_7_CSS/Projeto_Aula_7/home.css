@@ -17,3 +17,11 @@ main h2, ul, li {
     text-align: center;
     font-family: arial;
 }
+
+a:link {
+    color: #FF512F;
+}
+
+a:visited {
+    color: #02AABD;
+}
