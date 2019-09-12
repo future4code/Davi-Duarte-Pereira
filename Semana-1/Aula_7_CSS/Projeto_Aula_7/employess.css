@@ -1,0 +1,17 @@
+ #header_main {
+    font-family: tahoma;
+    text-align: center;
+}
+
+.roles {
+    text-align: center;
+}
+
+main p {
+    font-family: Arial;
+    text-align: center;
+}
+
+table {
+    margin: 0 auto;
+}
