@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 1px solid black;
+}
+
+.main_inline {
+    display: inline;
+}
+
+
+div.div_main {
+    margin: 10vh 25vw 10vh 25vw; 
+}
+
+div.habilities {
+    margin: 10vh 25vw 10vh 25vw; 
+}
+
+div.portfolio {
+    margin: 15vh 0vw;
+}
+
+div div.row_1, div div.row_2 {
+    display: inline-block;
+    margin: 5vh 5vw 5vh 9.25vw;
+    padding: 7.5vh 8vw 7.5vh 8vw;
+}
+
+#top_row {
+    margin-top: 15vh;
+    margin-bottom: 10vh;
+}
+
+#bottom_row {
+    margin-bottom: 15vh;
+}
+
+#circles {
+    margin-top: 10vh;
+    text-align: center;
+}
+
+.circle {
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2px solid black;
+}
+
+#forms {
+    margin-top: 10vh; 
+}
