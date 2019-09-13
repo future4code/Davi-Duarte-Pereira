@@ -54,9 +54,9 @@ footer p {
 }
 
 a:link {
-    color: #FF512F;
+    color: #62BEC1;
 }
 
-a:visited {
+footer a:visited {
     color: #02AABD;
 }

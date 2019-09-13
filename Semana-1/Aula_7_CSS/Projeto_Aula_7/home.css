@@ -18,10 +18,10 @@ main h2, ul, li {
     font-family: arial;
 }
 
-a:link {
+ul a:link {
     color: #FF512F;
 }
 
-a:visited {
-    color: #02AABD;
+ul a:visited {
+    color: #494C5E;
 }

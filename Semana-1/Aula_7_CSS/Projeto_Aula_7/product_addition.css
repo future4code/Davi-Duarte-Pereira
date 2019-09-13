@@ -10,43 +10,23 @@ main {
     padding-bottom: 2vh;
 }
 
-#f1:focus {
+#f1:focus, #f1:hover  {
     background-color: #FF595E;
 }
 
-#f2:focus {
+#f2:focus, #f2:hover {
     background-color: #FFCA3A;
 }
 
-#f3:focus {
+#f3:focus, #f3:hover {
     background-color: #7DBE42;
 }
 
-#f4:focus {
+#f4:focus, #f4:hover {
     background-color: #1982C4;
 }
 
-#f5:focus {
-    background-color: #6A4C93;
-}
-
-#f1:hover {
-    background-color: #FF595E;
-}
-
-#f2:hover {
-    background-color: #FFCA3A;
-}
-
-#f3:hover {
-    background-color: #7DBE42;
-}
-
-#f4:hover {
-    background-color: #1982C4;
-}
-
-#f5:hover {
+#f5:focus, #f5:hover {
     background-color: #6A4C93;
 }
 
@@ -60,4 +40,8 @@ a:link {
 
 a:visited {
     color: #02AABD;
+}
+
+main a:visited {
+    color: #494C5E;
 }

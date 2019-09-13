@@ -23,3 +23,7 @@ a:link {
 a:visited {
     color: #02AABD;
 }
+
+main a:visited {
+    color: #494C5E;
+}
