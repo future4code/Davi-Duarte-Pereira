@@ -9,18 +9,16 @@
     <title>Davi Duarte | Home</title>
 </head>
 <body>
-    <div>
-        <header>
+    <div id="header">
+        <header style="text-align: center">
             <p class="main_inline" id="CV">Curriculo</p>
             <p class="main_inline" id="projects">Projetos</p>
-            <h1 class="main_inline" id="main_name">Davi Duarte</h1>
+            <h1 class="main_inline" id="main_name">Davi Duarte <img width="30px" height="30px" src="images/iconfinder-icon.svg"></h1>
             <p class="main_inline" id="contact">Contato</p>
             <p class="main_inline" id="about">Sobre</p>
         </header>
-        <section>
-            <h1>Full Stack Developer</h1>
-        </section>
     </div>
+    <h1 id="fullstackh1" style="">Full Stack Developer</h1>
     <div class="div_main">
         <h1>Sobre mim</h1>
         <p>Faceis perdia tinhas comigo namoro orelha has sou.
@@ -81,15 +79,18 @@
         <div class="row_2">6</div>
     </div>
     <div id="circles">
-        <span class="circle"></span>
-        <span class="circle"></span>
-        <span class="circle"></span>
+        <h1>Minhas redes sociais:</h1>
+        <span class="circle" id="c1"><img src="images/iconfinder_linkedin_circle_color_107178.svg"></span>
+        <span class="circle" id="c2"><img style="margin-bottom: 10vh" src="images/iconfinder_mark-github_298822.svg"></span>
+        <span class="circle" id="c3"><img src="images/iconfinder_twitter_circle_color_107170.svg"></span>
     </div>
     <div id="forms">
-        <form style="text-align: center">
+        <p style="text-align: center">Deseja entrar em contato comigo? Preencha o formulário abaixo.</p>
+        <form id="form2">
             <input type="text" name="nome" required></input><br>
             <input type="text" name="email" required></input><br>
             <input type="text" name="mensagem"></input><br>
+            <button type="submit">Enviar</button>
         </form>
     </div>
 </body>
