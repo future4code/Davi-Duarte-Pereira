@@ -1,0 +1,29 @@
+ #header_main {
+    font-family: tahoma;
+    text-align: center;
+}
+
+.roles {
+    text-align: center;
+}
+
+main p {
+    font-family: Arial;
+    text-align: center;
+}
+
+table {
+    margin: 0 auto;
+}
+
+a:link {
+    color: #FF512F;
+}
+
+a:visited {
+    color: #02AABD;
+}
+
+main a:visited {
+    color: #494C5E;
+}

@@ -52,3 +52,11 @@ footer p {
     padding-right: 1.8vw;
     font-family: arial;
 }
+
+a:link {
+    color: #62BEC1;
+}
+
+footer a:visited {
+    color: #02AABD;
+}

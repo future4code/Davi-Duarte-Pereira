@@ -1,0 +1,24 @@
+.preco {
+    margin: 0 auto;
+}
+
+#tab .img {
+    border: 2px solid #646881;
+}
+
+#tab .resto {
+    font-family: Tahoma;
+}
+
+main h1, p {
+    padding-left: 1.5vw;
+    font-family: Tahoma;
+}
+
+a:link {
+    color: #FF512F;
+}
+
+main a:visited {
+    color: #494C5E;
+}
