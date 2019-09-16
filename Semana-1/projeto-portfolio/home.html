@@ -80,17 +80,19 @@
     </div>
     <div id="circles">
         <h1>Minhas redes sociais:</h1>
-        <span class="circle" id="c1"><img src="images/iconfinder_linkedin_circle_color_107178.svg"></span>
-        <span class="circle" id="c2"><img style="margin-bottom: 10vh" src="images/iconfinder_mark-github_298822.svg"></span>
-        <span class="circle" id="c3"><img src="images/iconfinder_twitter_circle_color_107170.svg"></span>
+        <a href="https://www.linkedin.com/in/daviduartepereira78b277189/" target="blank"><span class="circle" id="c1"><img src="images/iconfinder_linkedin_circle_color_107178.svg" title="LinkedIn"></span></a>
+        <a href="https://github.com/d-uartepereira" target="blank"><span class="circle" id="c2"><img src="images/iconfinder_mark-github_298822.svg" title="GitHub"></span></a>
     </div>
     <div id="forms">
         <p style="text-align: center">Deseja entrar em contato comigo? Preencha o formulário abaixo.</p>
         <form id="form2">
-            <input type="text" name="nome" required></input><br>
-            <input type="text" name="email" required></input><br>
-            <input type="text" name="mensagem"></input><br>
-            <button type="submit">Enviar</button>
+            <p class="form_label">Nome</p>
+            <input class="input_form" type="text" name="nome" required></input><br>
+            <p class="form_label">Email</p>
+            <input class="input_form" type="text" name="email" required></input><br>
+            <p id="form_label_last">Sua mensagem (opcional)</p>
+            <input class="input_form" type="text" name="mensagem"></input><br>
+            <button class="input_form" type="submit">Enviar</button>
         </form>
     </div>
 </body>

@@ -61,10 +61,6 @@ div#circles h1 {
 }
 
 #c2 {
-    margin-bottom: 5vh;
-}
-
-#c3 {
     margin-left: 5vw; 
 }
 
@@ -98,4 +94,20 @@ div#circles h1 {
     border-bottom-color: #AECCDE;
     border-width: 5px;
     padding-bottom: 3vh;
+}
+
+#forms > p {
+    padding: 10vh 0;
+}
+
+.input_form {
+    margin: 3vh 0;
+}
+
+.form_label {
+    margin-right: 7.5vw;
+}
+
+#form_label_last {
+    margin-left: 1.9vw;
 }
