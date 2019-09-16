@@ -15,20 +15,27 @@ body {
 
 .header {
     display: flex;
-    background-color: red;
+    height: 50px;
+    background-color: #FDF9F3;
+    align-items: baseline;
 }
 
 #navigation {
     background: #e8e7e7;
-    margin: 20px 0;
-    padding: 6px 9px;
-    border-radius: 3px;
-    width: 25%;
+    margin: 5px auto;
+    padding: 5px 15px; 
 }
 
-#logo_img {
-    width: 33px;
-    height: 21px;
+#button {
+    background-color: #66E2D5;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid black;
+}
+
+#logo_img, #paperplane, #notification, #user_icon {
+    width: 40px;
+    height: 25px;
 }
 
 .feed {
