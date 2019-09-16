@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.main_inline {
+    display: inline;
+}
+
+
+div.div_main {
+    margin: 10vh 25vw 10vh 25vw;
+    background: #134074;
+}
+
+div.habilities {
+    margin: 10vh 25vw 10vh 25vw;
+    background: #134074;
+}
+
+div.portfolio {
+    margin: 15vh 0vw;
+    background: #74B0D8;
+}
+
+div div.row_1, div div.row_2 {
+    display: inline-block;
+    margin: 5vh 5vw 5vh 9.25vw;
+    padding: 7.5vh 8vw 7.5vh 8vw;
+}
+
+#top_row {
+    margin-top: 15vh;
+    margin-bottom: 10vh;
+}
+
+#bottom_row {
+    margin-bottom: 15vh;
+}
+
+#circles {
+    margin-top: 10vh;
+    text-align: center;
+}
+
+.circle, .circle > img {
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+div#circles h1 {
+    margin-bottom: 10vh;
+}
+
+#c1 {
+    margin-right: 5vw; 
+}
+
+#c2 {
+    margin-left: 5vw; 
+}
+
+#forms {
+    margin-top: 10vh;
+    background: #74B0D8;
+}
+
+#contact, #about {
+    padding-left: 5vw;
+}
+
+#CV, #projects {
+    padding-right: 5vw;
+}
+
+#form2 {
+    text-align: center;
+}
+
+#header {
+    background: #74B0D8;
+    padding-bottom: 7vh;
+    padding-top: 3vh;
+}
+
+#fullstackh1 {
+    text-align: center;
+    background: #74B0D8; 
+    border-bottom-style: double; 
+    border-bottom-color: #AECCDE;
+    border-width: 5px;
+    padding-bottom: 3vh;
+}
+
+#forms > p {
+    padding: 10vh 0;
+}
+
+.input_form {
+    margin: 3vh 0;
+}
+
+.form_label {
+    margin-right: 7.5vw;
+}
+
+#form_label_last {
+    margin-left: 1.9vw;
+}
