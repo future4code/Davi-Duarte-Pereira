@@ -1,0 +1,15 @@
+main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+main > nav {
+    border: 2px outset #403E4C;
+    margin: 15px 15px 15px 12px;
+}
+
+img {
+    width: 353.33px;
+    height: 114.8px;
+}
