@@ -18,6 +18,12 @@ body, html {
     margin: 15px 30px 30px 15px;
 }
 
+/* poderia ter feito dessa forma: */
+/* #grid-boxes {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 20vh);
+} */
+
 #box-1, #box-4 {
     background: blue;
     border: 2px solid black;
