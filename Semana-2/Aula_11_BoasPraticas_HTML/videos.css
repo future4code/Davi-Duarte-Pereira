@@ -1,0 +1,13 @@
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+    font-size: 22pt;
+    font-weight: bold;
+}
+
+video {
+    height: 80%;
+    width: 100%;
+}
