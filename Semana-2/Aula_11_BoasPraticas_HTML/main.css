@@ -14,15 +14,6 @@ header {
     color: #D0C2C4;
 }
 
- main {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);    
-    grid-column: 2 / -1;
-    grid-row: 2 / 5;
-    background: #D0C2C4;
-}
-
 footer {
     background: #403E4C;
     grid-column: 1 / -1;

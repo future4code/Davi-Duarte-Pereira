@@ -10,11 +10,20 @@ img {
     border-bottom: 3px solid #403E4C;
 }
 
-#home_content {
+div#home_content {
     width: 100vw;
     min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr repeat(4, 2fr);
     grid-template-rows: 60px repeat(3, 2fr) 60px;
     font-family: 'Gayathri', sans-serif;
+}
+
+main#home-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);    
+    grid-column: 2 / -1;
+    grid-row: 2 / 5;
+    background: #D0C2C4;
 }
