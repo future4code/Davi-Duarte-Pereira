@@ -1,13 +1,8 @@
-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 20%;
-    font-size: 22pt;
-    font-weight: bold;
-}
-
-video {
-    height: 80%;
-    width: 100%;
+#internal-content {
+    width: 100vw;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr ;
+    grid-template-rows: 60px repeat(3, 2fr) 60px;
+    font-family: 'Gayathri', sans-serif;
 }
