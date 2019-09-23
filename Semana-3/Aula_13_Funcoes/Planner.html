@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="Planner.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <script src="Planner.js"></script>
+    <title>Weekly Planner</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <p>Nova tarefa:</p>
+            <input type="text" id="valor_tarefa">
+            <select name="diaDaSemana" id="diaDaSemana">
+                <option value="segunda">Segunda-Feira</option>
+                <option value="terca">Terça-Feira</option>
+                <option value="quarta">Quarta-Feira</option>
+                <option value="quinta">Quinta-Feira</option>
+                <option value="sexta">Sexta-Feira</option>
+                <option value="sabado">Sábado</option>
+                <option value="domingo">Domingo</option>
+            </select>
+            <button onclick="criarItem()">Criar Tarefa!</button>
+        </header>
+        <main>
+            <ul class="diaDaSemana" id="Seg">
+                Segunda
+            </ul>
+            <ul class="diaDaSemana" id="Ter">
+                Terça
+            </ul>
+            <ul class="diaDaSemana" id="Qua">
+                Quarta
+            </ul>
+            <ul class="diaDaSemana" id="Qui">
+                Quinta
+            </ul>
+            <ul class="diaDaSemana" id="Sex">
+                Sexta
+            </ul>
+            <ul class="diaDaSemana" id="Sab">
+                Sábado
+            </ul>
+            <ul class="diaDaSemana" id="Dom">
+                Domingo
+            </ul>
+        </main>
+        <footer><p>Powered by <a href="https://www.future4.com.br" target="blank">Future4.</a></p></footer>
+    </div>
+</body>
+</html>
