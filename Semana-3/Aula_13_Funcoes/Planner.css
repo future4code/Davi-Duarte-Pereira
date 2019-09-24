@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+div.wrapper {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-rows: 10vh 1fr 10vh;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 4px solid #545F66;
+    background: #829399;
+}
+
+header p, header input, header select, header button {
+    margin: 0 10px;
+}
+
+input {
+    background: #D0F4EA;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    background: #D0F4EA;
+    font-size: 20pt;
+}
+
+li {
+    font-size: 12pt;
+}
+
+#Seg {
+    border-left: 4px solid #545F66;
+    border-top: 4px solid #545F66;
+    border-bottom: 4px solid #545F66;
+}
+
+#Ter, #Qua, #Qui, #Sex, #Sab {
+    border-top: 4px solid #545F66;
+    border-bottom: 4px solid #545F66;
+}
+
+#Dom {
+    padding-right: 25px;
+    border-right: 4px solid #545F66;
+    border-top: 4px solid #545F66;
+    border-bottom: 4px solid #545F66;
+}
+
+footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    border-top: 4px solid #545F66;
+    background: #829399;
+    padding: 0 15px; 
+}
+
+a {
+    color: #D0F4EA;
+}
