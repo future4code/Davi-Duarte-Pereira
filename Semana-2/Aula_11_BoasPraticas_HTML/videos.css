@@ -1,0 +1,32 @@
+div#internal-content {
+    width: 100vw;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    grid-template-rows: 60px repeat(3, 2fr) 60px;
+    font-family: 'Gayathri', sans-serif;
+}
+
+p > a {
+    color: black;
+}
+
+main {
+    grid-column: 2 / -1;
+    grid-row: 2 / 5;
+    display: grid;
+    grid-template-columns:4fr 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: 10px;
+}
+
+menu {
+    border: 3px solid #403E4C; 
+    grid-column: -1 / -2;
+    margin-right: 10px;
+}
+
+img {
+    width: 60%;
+    height: 100%;
+}
