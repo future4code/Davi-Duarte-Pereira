@@ -25,7 +25,7 @@
             <textarea form="input_blog" id="content_input"></textarea>
             <label for="references_input">Referências</label>
             <input type="text" id="references_input">
-            <button type="button">Enviar!</button>
+            <button type="button" onclick="criarConteudo()">Enviar!</button>
         </form>
         <h1 id="title_output"></h1>
         <h4 id="autor_output"></h4>
@@ -35,6 +35,22 @@
 </body>
 
 <script>
+    class Post {
+        constructor(titulo, autor, conteudo, referencias) {
+            this.titulo = titulo;
+            this.autor = autor;
+            this.conteudo = conteudo;
+            this.referencias = referencias;
+        }
+    }
+
+    
+
+    function criarConteudo() {
+        const postTeste = new Post(document.getElementById("title_input").value, document.getElementById("autor_input").value, document.getElementById("content_input").value, document.getElementById("references_input").value);
+
+        console.log(postTeste);
+    }
 </script>
 
 </html>
