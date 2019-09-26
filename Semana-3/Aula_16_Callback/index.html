@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Controlador de despesas</title>
+</head>
+<body>
+ <div id="cadastro-despesas">
+     <h1>Cadastro das despesas</h1>
+     <input type="text" id="valorDespesa" placeholder="Valor da Despesa">
+     <select name="tipoDespesa" id="tipoDespesa">
+         <option value="Casa">Casa</option>
+         <option value="Viagem">Viagem</option>
+         <option value="Pessoal">Pessoal</option>
+     </select>
+     <input type="text" id="descricaoDespesa" placeholder="Descrição da despesa">
+     <button type="button" onclick="cadastrarDespesa()">Cadastrar Despesa</button>
+ </div>
+ <div id="filtro-despesas">
+    <h1>Filtro de despesas</h1>
+    <select name="tipoDespesaFiltro" id="tipoDespesaFiltro">
+        <option value="Casa">Casa</option>
+        <option value="Viagem">Viagem</option>
+        <option value="Pessoal">Pessoal</option>
+    </select>
+    <input type="text" id="valorMinFiltro" placeholder="Valor mínimo">
+    <input type="text" id="valorMaxFiltro" placeholder="Valor máximo">
+    <button type="button" onclick="">Filtrar</button>
+    <button type="button" onclick="">Limpar filtros</button>
+    <section id="areaDasDespesas"></section>
+ </div> 
+</body>
+<script>
+    function limpaCadastro() {
+        document.getElementById("valorDespesa").value = "";
+        document.getElementById("tipoDespesa").value = "";
+        document.getElementById("descricaoDespesa").value = "";
+    }
+
+    class Despesa {
+        constructor(valorDaDespesa, tipoDeDespesa, descricaoDaDespesa){
+            this.valorDaDespesa = valorDaDespesa;
+            this.tipoDeDespesa = tipoDeDespesa;
+            this.descricaoDaDespesa = descricaoDaDespesa;
+        }
+
+        renderizaDespesa(){
+            const despesaRenderizada = "<hr><p>R$" + this.valorDaDespesa + 
+                                        " Tipo: " + this.tipoDeDespesa +
+                                        " Descrição: " + this.descricaoDaDespesa + 
+                                        "</p><hr>"
+            return despesaRenderizada;
+        }
+    }
+
+    let arrayDespesas = [];
+
+    function cadastrarDespesa() {
+        const oValorDespesa = Number(document.getElementById("valorDespesa").value); 
+        const oTipoDespesa = document.getElementById("tipoDespesa").value; 
+        const aDescricaoDespesa = document.getElementById("descricaoDespesa").value;
+
+        if (oValorDespesa || oTipoDespesa || aDescricaoDespesa === "") {
+            if (oValorDespesa === "") {
+                alert("O valor da despesa não pode ficar em branco.");
+                return "value not defined"
+            } else if (oTipoDespesa === "") {
+                alert("O tipo de despesa não pode ficar em branco.");
+                return "value not defined"
+            } else if (aDescricaoDespesa === "") {
+                alert("A descrição da despesa não pode ficar em branco.");
+                return "value not defined"
+            } 
+        }
+
+        const despesa = new Despesa(oValorDespesa, oTipoDespesa, aDescricaoDespesa);
+
+        arrayDespesas.push(despesa);
+
+        console.log(arrayDespesas);
+
+        alert("A despesa foi cadastrada com sucesso!");
+
+        limpaCadastro();
+
+        renderizaDespesa();
+    }
+
+    function renderizaDespesa() {
+        const areaDasDespesas = document.getElementById("areaDasDespesas");
+
+        areaDasDespesas.innerHTML = "";
+
+        for(let postDespesa of arrayDespesas){
+
+            const despesaComoInstancia = new Despesa(postDespesa.valorDaDespesa, postDespesa.tipoDeDespesa, postDespesa.descricaoDaDespesa);
+            areaDasDespesas.innerHTML += despesaComoInstancia.renderizaDespesa();
+        }
+    }
+</script>
+</html>
