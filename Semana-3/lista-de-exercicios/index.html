@@ -54,15 +54,70 @@
         const arrayBonita = [1, 2, 3, 4, 5];
 
         for (let numero of arrayBonita){
-            numero = arrayBonita.indexOf(1)++ ;
+            numero = arrayBonita.indexOf(1) ;
 
             console.log("A soma de todos os valores da array Bonita é: " + numero);
-        }
-
-        
-        
+        }  
     }
 
-    exerciciosDeLogicaDeProgramacao_1a();
+    function exerciciosDeLogicaDeProgramacao_1b(){
+        // Exercicio 1a
+        /* Na função abaixo eu irei exemplificar a primeira maneira de iterar sobre uma lista/array. */
+
+        const arrayBonita = [1, 2, 3, 4, 5];
+
+        for (let numero of arrayBonita){
+            numero = arrayBonita.indexOf(1) ;
+
+            console.log("A soma de todos os valores da array Bonita é: " + numero);
+        }  
+    }
+
+    function exerciciosDeLogicaDeProgramacao_1c(){
+        // Exercicio 1a
+        /* Na função abaixo eu irei exemplificar a primeira maneira de iterar sobre uma lista/array. */
+
+        const arrayBonita = [1, 2, 3, 4, 5];
+
+        for (let numero of arrayBonita){
+            numero = arrayBonita.indexOf(1) ;
+
+            console.log("A soma de todos os valores da array Bonita é: " + numero);
+        }  
+    }    
+
+    function exerciciosDeLogicaDeProgramacao_2(){
+        // Exercicio a) false
+        // Exercicio b) false
+        // Exercicio c) true
+        // Exercicio d) false
+        // Exercicio e) true
+    }
+
+    function exerciciosDeLogicaDeProgramacao_3(){
+        const quantidadeDeNumerosPares = 3;
+        let i = 0;
+        while(i < quantidadeDeNumerosPares) {
+            const array = [i]
+            array.push(i++ * 2);
+            
+            console.log(array);
+        }
+    }
+
+    function exerciciosDeLogicaDeProgramacao_4(a, b, c){
+
+        if (a === b && b === c ) {
+            console.log("O triângulo é equilátero.")
+        } else if (a === b && b !== c) {
+            console.log("O triângulo é isósceles.")
+        } else if (b === c && c !== a) {
+            console.log("O triângulo é isósceles.")
+        } else if (a === c && c !== b) {
+            console.log("O triângulo é isósceles.")
+        } else if (a !== b && b !== c && c !== a) {
+            console.log("O triângulo é escaleno.")
+        } 
+    }
 </script>
 </html>
