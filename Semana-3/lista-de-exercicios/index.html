@@ -119,5 +119,34 @@
             console.log("O triângulo é escaleno.")
         } 
     }
+
+    function exerciciosDeLogicaDeProgramacao_4(){
+        const numero1 = Number(prompt("Digite o valor do número 1."));
+        const numero2 = Number(prompt("Digite o valor do número 2."));
+
+        if (numero1 > numero2) {
+            console.log("Maior número: " + numero1)
+        } else {
+            console.log("Maior número: " + numero2)
+        }
+
+        if (numero1 < numero2) {
+            console.log(numero1, " não é divisível por ", numero2);
+            if (numero2 % numero1 === 0) {
+                console.log(numero2, " é divisível por ", numero1);
+            } else {
+                console.log(numero2, " não divisível por ", numero1);
+            }
+        } else {
+            console.log(numero2, " não e divisível por ", numero1);
+            if (numero1 % numero2 === 0) {
+                console.log(numero1, " é divisível por ", numero2);
+            } else {
+                console.log(numero1, " não divisível por ", numero2);
+            }
+        }
+    }
+
+    exerciciosDeLogicaDeProgramacao_4();
 </script>
 </html>
