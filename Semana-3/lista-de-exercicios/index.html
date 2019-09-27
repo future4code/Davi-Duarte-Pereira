@@ -255,7 +255,7 @@
         const array = [1, 2, 3, 4, 5, 6];
 
         const arrayTimes3PlusStrings = array.map((numero) => {
-            return String(numero * 3) ;
+            return String(numero * 3);
         })
 
         console.log(arrayTimes3PlusStrings);
@@ -266,7 +266,7 @@
 
         const arrayStringsNumerosParesEimpares = array.map((numero) => {
             if (numero % 2 === 0) {
-                 return numero = String(numero + " é par");
+                return numero = String(numero + " é par");
             } else {
                 return numero = String(numero + " é ímpar");
             }
@@ -275,7 +275,41 @@
         console.log(arrayStringsNumerosParesEimpares);
     }
 
-    exercicioDeArrays_2c();
+    function exercicioDeArrays_3a() {
+        const pessoas = [
+            { nome: "Paula", idade: 12, altura: 1.8 },
+            { nome: "João", idade: 20, altura: 1.3 },
+            { nome: "Pedro", idade: 15, altura: 1.9 },
+            { nome: "Luciano", idade: 22, altura: 1.8 },
+            { nome: "Artur", idade: 10, altura: 1.2 },
+            { nome: "Soter", idade: 70, altura: 1.9 }
+        ]
+
+        const pessoasQuePodemEntrarNoBrinquedo = pessoas.filter((pessoa) => {
+            return pessoa.altura >= 1.5 && pessoa.idade > 15 && pessoa.idade < 60; 
+        })
+
+        console.log("As pessoas que podem entrar no brinquedo são: ", pessoasQuePodemEntrarNoBrinquedo);
+    }
+
+    function exercicioDeArrays_3b() {
+        const pessoas = [
+            { nome: "Paula", idade: 12, altura: 1.8 },
+            { nome: "João", idade: 20, altura: 1.3 },
+            { nome: "Pedro", idade: 15, altura: 1.9 },
+            { nome: "Luciano", idade: 22, altura: 1.8 },
+            { nome: "Artur", idade: 10, altura: 1.2 },
+            { nome: "Soter", idade: 70, altura: 1.9 }
+        ]
+
+        const pessoasQueNaoPodemEntrarNoBrinquedo = pessoas.filter((pessoa) => {
+            return pessoa.altura < 1.5 || pessoa.idade < 15 || pessoa.idade > 60; 
+        })
+
+        console.log("As pessoas que não podem entrar no brinquedo são: ", pessoasQueNaoPodemEntrarNoBrinquedo);
+    }
+
+    exercicioDeArrays_3b();
 
 </script>
 
