@@ -7,7 +7,9 @@
     <title>Lista de exercícios | Future4</title>
 </head>
 <body>
-    
+    <div>
+        <p id="MeuFilmeFavorito"></p>
+    </div>
 </body>
 <script>
     function interpretacaoDeCodigo(){
@@ -174,6 +176,22 @@
         console.log(retangulo);
     }
 
-    exerciciosDeObjetos_2(10, 15);
+    function exerciciosDeObjetos_3(){
+        const meuFilmeFavorito = {
+            titulo: "Vingadores: Ultimato",
+            ano: "2019",
+            diretor: "Russo Brothers",
+            atores: ["Robert Downey Jr., " + "Chris Evans e " + "Mark Ruffalo."]
+        }
+
+        const renderizaMeuFilmeFavorito = document.getElementById("MeuFilmeFavorito");
+
+        renderizaMeuFilmeFavorito.innerHTML += "Venha assistir ao filme " + meuFilmeFavorito.titulo +
+                                                ", de " + meuFilmeFavorito.ano + ", dirigido por " +
+                                                meuFilmeFavorito.diretor + " e estrelado por " +
+                                                meuFilmeFavorito.atores; 
+    }
+
+    exerciciosDeObjetos_3();
 </script>
 </html>
