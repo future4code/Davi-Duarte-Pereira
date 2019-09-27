@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Lista de exercícios | Future4</title>
 </head>
+
 <body>
     <div>
         <p id="MeuFilmeFavorito"></p>
     </div>
 </body>
 <script>
-    function interpretacaoDeCodigo(){
+    function interpretacaoDeCodigo() {
         // Exercicio 1
         /* O exercício 1 trata-se de uma função que converte um valor dado em Reais como argumento dentro dela, para o Dólar. 
             Na função, também é obtido o valor da cotação do Dólar, que é inputado pelo usuário através de um prompt.
             O resultado do console.log deste código, com a cotação do Dólar em R$4,16.00, será U$416.00 Dólares.*/
 
-        
+
         // Exercicio 2
         /* No segundo exercício, é utilizado na função o switch e case para calcular o valor de um investimento. Para invocar esta função,
             é necessário passar dois argumentos: o tipo de investimento (em strings: poupança, renda fixa, CDB ou ações) e o valor do montante
             (um dado numérico). Caso seja passado outros valores em strings sem ser estes, ou no segundo argumento, ser passado um dado sem ser numérico,
             a função irá retornar um alert com a mensagem de que o tipo de investimento foi passado incorretamente. No exercício, há dois console.log.
             O primeiro console.log irá retornar 165, e o segundo irá retornar o alert, pois o tipo de investimento "Tesouro direto" não foi parametrizado
-            no switch e case. */ 
+            no switch e case. */
 
 
         // Exercicio 3
@@ -35,9 +37,9 @@
             definido, caso contrário (se for impar) ele será adicionado à segunda array que possuia nenhum elemento definido. Após o loop (ou laço),
             é realizado três console.log(), sendo o primeiro para imprimir a quantidade de elementos na primeira array, o segundo irá imprimir os elementos
             da segunda (os elementos pares), e o terceiro console.log() irá imprimir a quantidade de elementos da terceira array. Os valores são, respectivamente,
-            14, 6 e 8. */ 
+            14, 6 e 8. */
 
-        
+
         // Exercicio 4
         /* Por fim, no último exercício desta lista, é declarada uma array com diversos elementos numéricos e duas variáveis; a "numero1" e a "numero2".
             Após as declarações de variáveis, é realizado um loop para iterar sobre a array, e atribuir algum valor desta array para as outras variáveis
@@ -49,46 +51,46 @@
             da array, que é 1590. */
     }
 
-    function exerciciosDeLogicaDeProgramacao_1a(){
+    function exerciciosDeLogicaDeProgramacao_1a() {
         // Exercicio 1a
         /* Na função abaixo eu irei exemplificar a primeira maneira de iterar sobre uma lista/array. */
 
         const arrayBonita = [1, 2, 3, 4, 5];
 
-        for (let numero of arrayBonita){
-            numero = arrayBonita.indexOf(1) ;
+        for (let numero of arrayBonita) {
+            numero = arrayBonita.indexOf(1);
 
             console.log("A soma de todos os valores da array Bonita é: " + numero);
-        }  
+        }
     }
 
-    function exerciciosDeLogicaDeProgramacao_1b(){
+    function exerciciosDeLogicaDeProgramacao_1b() {
         // Exercicio 1a
         /* Na função abaixo eu irei exemplificar a primeira maneira de iterar sobre uma lista/array. */
 
         const arrayBonita = [1, 2, 3, 4, 5];
 
-        for (let numero of arrayBonita){
-            numero = arrayBonita.indexOf(1) ;
+        for (let numero of arrayBonita) {
+            numero = arrayBonita.indexOf(1);
 
             console.log("A soma de todos os valores da array Bonita é: " + numero);
-        }  
+        }
     }
 
-    function exerciciosDeLogicaDeProgramacao_1c(){
+    function exerciciosDeLogicaDeProgramacao_1c() {
         // Exercicio 1a
         /* Na função abaixo eu irei exemplificar a primeira maneira de iterar sobre uma lista/array. */
 
         const arrayBonita = [1, 2, 3, 4, 5];
 
-        for (let numero of arrayBonita){
-            numero = arrayBonita.indexOf(1) ;
+        for (let numero of arrayBonita) {
+            numero = arrayBonita.indexOf(1);
 
             console.log("A soma de todos os valores da array Bonita é: " + numero);
-        }  
-    }    
+        }
+    }
 
-    function exerciciosDeLogicaDeProgramacao_2(){
+    function exerciciosDeLogicaDeProgramacao_2() {
         // Exercicio a) false
         // Exercicio b) false
         // Exercicio c) true
@@ -96,20 +98,20 @@
         // Exercicio e) true
     }
 
-    function exerciciosDeLogicaDeProgramacao_3(){
+    function exerciciosDeLogicaDeProgramacao_3() {
         const quantidadeDeNumerosPares = 3;
         let i = 0;
-        while(i < quantidadeDeNumerosPares) {
+        while (i < quantidadeDeNumerosPares) {
             const array = [i]
             array.push(i++ * 2);
-            
+
             console.log(array);
         }
     }
 
-    function exerciciosDeLogicaDeProgramacao_4(a, b, c){
+    function exerciciosDeLogicaDeProgramacao_4(a, b, c) {
 
-        if (a === b && b === c ) {
+        if (a === b && b === c) {
             console.log("O triângulo é equilátero.")
         } else if (a === b && b !== c) {
             console.log("O triângulo é isósceles.")
@@ -119,10 +121,10 @@
             console.log("O triângulo é isósceles.")
         } else if (a !== b && b !== c && c !== a) {
             console.log("O triângulo é escaleno.")
-        } 
+        }
     }
 
-    function exerciciosDeLogicaDeProgramacao_5(){
+    function exerciciosDeLogicaDeProgramacao_5() {
         const numero1 = Number(prompt("Digite o valor do número 1."));
         const numero2 = Number(prompt("Digite o valor do número 2."));
 
@@ -149,23 +151,23 @@
         }
     }
 
-    function exerciciosDeFuncoes_1(array){
+    function exerciciosDeFuncoes_1(array) {
 
     }
 
-    const exerciciosDeFuncoes_2 = function(){
+    const exerciciosDeFuncoes_2 = function () {
         alert("Hello Future4");
     }
 
-    function exerciciosDeObjetos_1(){
+    function exerciciosDeObjetos_1() {
         // Objetos: São variáveis que possuem diversas propriedades que podem ser utilizadas como métodos para aquele objeto ou, "subvariáveis."
         // Arrays: São variáveis que podemos armazenar múltiplos valores dentro dela, e podemos utilizar todos esses valores para fazermos operações
-            // lógicas e aritméticas, de concatenação etc.
+        // lógicas e aritméticas, de concatenação etc.
         // Devemos utilizar arrays quando formos realizar operações que envolvem diversos valores, e objetos são voltados para guardar métodos e propriedades
-            // de uma determinada variável.
+        // de uma determinada variável.
     }
 
-    function exerciciosDeObjetos_2(lado1, lado2){
+    function exerciciosDeObjetos_2(lado1, lado2) {
         const retangulo = {
             largura: lado1,
             altura: lado2,
@@ -176,7 +178,7 @@
         console.log(retangulo);
     }
 
-    function exerciciosDeObjetos_3(){
+    function exerciciosDeObjetos_3() {
         const meuFilmeFavorito = {
             titulo: "Vingadores: Ultimato",
             ano: "2019",
@@ -187,12 +189,12 @@
         const renderizaMeuFilmeFavorito = document.getElementById("MeuFilmeFavorito");
 
         renderizaMeuFilmeFavorito.innerHTML += "Venha assistir ao filme " + meuFilmeFavorito.titulo +
-                                                ", de " + meuFilmeFavorito.ano + ", dirigido por " +
-                                                meuFilmeFavorito.diretor + " e estrelado por " +
-                                                meuFilmeFavorito.atores; 
+            ", de " + meuFilmeFavorito.ano + ", dirigido por " +
+            meuFilmeFavorito.diretor + " e estrelado por " +
+            meuFilmeFavorito.atores;
     }
 
-    function exerciciosDeObjetos_4(){
+    function exerciciosDeObjetos_4() {
         const pessoa = {
             nome: "José",
             idade: 23,
@@ -200,7 +202,7 @@
             endereco: "Avenida Paulista, 478, São Paulo, SP"
         }
 
-        const anonimizarPessoa = function(){
+        const anonimizarPessoa = function () {
             pessoa.nome = "ANÔNIMO";
 
             return pessoa;
@@ -209,6 +211,37 @@
         console.log(anonimizarPessoa());
     }
 
-    exerciciosDeObjetos_4();
+    function exercicioDeArrays_1a() {
+        const pessoas = [
+            { nome: "Pedro", idade: 20 },
+            { nome: "João", idade: 10 },
+            { nome: "Paula", idade: 12 },
+            { nome: "Artur", idade: 89 }
+        ]
+
+        const pessoasAdultas = pessoas.filter((pessoa) => {
+            return pessoa.idade >= 20;
+        })
+
+        console.log("As pessoas adultas são: ", pessoasAdultas);
+    }
+
+    function exercicioDeArrays_1b() {
+        const pessoas = [
+            { nome: "Pedro", idade: 20 },
+            { nome: "João", idade: 10 },
+            { nome: "Paula", idade: 12 },
+            { nome: "Artur", idade: 89 }
+        ]
+
+        const criancasEadolescentes = pessoas.filter((pessoa) => {
+            return pessoa.idade < 20;
+        })
+
+        console.log("As pessoas crianças/adolescentes são: ", criancasEadolescentes);
+    }
+
+    exercicioDeArrays_1b();
 </script>
+
 </html>
