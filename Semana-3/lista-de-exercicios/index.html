@@ -155,6 +155,25 @@
         alert("Hello Future4");
     }
 
-    exerciciosDeFuncoes_2();
+    function exerciciosDeObjetos_1(){
+        // Objetos: São variáveis que possuem diversas propriedades que podem ser utilizadas como métodos para aquele objeto ou, "subvariáveis."
+        // Arrays: São variáveis que podemos armazenar múltiplos valores dentro dela, e podemos utilizar todos esses valores para fazermos operações
+            // lógicas e aritméticas, de concatenação etc.
+        // Devemos utilizar arrays quando formos realizar operações que envolvem diversos valores, e objetos são voltados para guardar métodos e propriedades
+            // de uma determinada variável.
+    }
+
+    function exerciciosDeObjetos_2(lado1, lado2){
+        const retangulo = {
+            largura: lado1,
+            altura: lado2,
+            perimetro: 2 * (lado1 + lado2),
+            area: lado1 * lado2
+        }
+
+        console.log(retangulo);
+    }
+
+    exerciciosDeObjetos_2(10, 15);
 </script>
 </html>
