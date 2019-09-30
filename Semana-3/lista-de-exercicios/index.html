@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista de exercícios | Future4</title>
+</head>
+
+<body>
+    <div>
+        <p id="MeuFilmeFavorito"></p>
+    </div>
+</body>
+<script>
+    function interpretacaoDeCodigo() {
+        // Exercicio 1
+        /* O exercício 1 trata-se de uma função que converte um valor dado em Reais como argumento dentro dela, para o Dólar. 
+            Na função, também é obtido o valor da cotação do Dólar, que é inputado pelo usuário através de um prompt.
+            O resultado do console.log deste código, com a cotação do Dólar em R$4,16.00, será U$416.00 Dólares.*/
+
+
+        // Exercicio 2
+        /* No segundo exercício, é utilizado na função o switch e case para calcular o valor de um investimento. Para invocar esta função,
+            é necessário passar dois argumentos: o tipo de investimento (em strings: poupança, renda fixa, CDB ou ações) e o valor do montante
+            (um dado numérico). Caso seja passado outros valores em strings sem ser estes, ou no segundo argumento, ser passado um dado sem ser numérico,
+            a função irá retornar um alert com a mensagem de que o tipo de investimento foi passado incorretamente. No exercício, há dois console.log.
+            O primeiro console.log irá retornar 165, e o segundo irá retornar o alert, pois o tipo de investimento "Tesouro direto" não foi parametrizado
+            no switch e case. */
+
+
+        // Exercicio 3
+        /* No exercício 3, é declarado 3 arrays, uma com diversos elementos com valores numéricos, e outras duas com nenhum elemento definido.
+            Logo após, é realizado um laço para iterar sobre a array com os elementos, utilizando o for e of; a cada elemento iterado pelo laço,
+            será feito um teste lógico. Se o elemento for divisível por 2 (for par) ele será adicionado à primeira array que possuia nenhum elemento
+            definido, caso contrário (se for impar) ele será adicionado à segunda array que possuia nenhum elemento definido. Após o loop (ou laço),
+            é realizado três console.log(), sendo o primeiro para imprimir a quantidade de elementos na primeira array, o segundo irá imprimir os elementos
+            da segunda (os elementos pares), e o terceiro console.log() irá imprimir a quantidade de elementos da terceira array. Os valores são, respectivamente,
+            14, 6 e 8. */
+
+
+        // Exercicio 4
+        /* Por fim, no último exercício desta lista, é declarada uma array com diversos elementos numéricos e duas variáveis; a "numero1" e a "numero2".
+            Após as declarações de variáveis, é realizado um loop para iterar sobre a array, e atribuir algum valor desta array para as outras variáveis
+            através de uma operação lógica. Na primeira operação, se algum elemento da array tiver o valor menor que o valor da variável "numero1",
+            o valor deste elemento da array será atribuído a ela. Como o valor da varável "numero1" é Infinity, os elementos da array sempre serão menores
+            que o valor da variável, sendo assim, será atribuído à variável o menor valor numérico dentro da array, que é -10. No segundo teste lógico,
+            a array é iterada novamente, e se o valor do elemento da array for maior que o valor da variável "numero2", este elemento da array será atribuído à 
+            variável "numero2". Como é um loop e a array inteira é iterada, o resultado deste teste lógico será o elemento de maior valor numérico dentro
+            da array, que é 1590. */
+    }
+
+    function exerciciosDeLogicaDeProgramacao_1a() {
+        // Exercicio 1a
+        /* Na função abaixo eu irei exemplificar a primeira maneira de iterar sobre uma lista/array. */
+
+        const arrayBonita = [1, 2, 3, 4, 5];
+
+        for (let numero of arrayBonita) {
+            numero = arrayBonita.indexOf(1);
+
+            console.log("A soma de todos os valores da array Bonita é: " + numero);
+        }
+    }
+
+    function exerciciosDeLogicaDeProgramacao_1b() {
+        // Exercicio 1a
+        /* Na função abaixo eu irei exemplificar a primeira maneira de iterar sobre uma lista/array. */
+
+        const arrayBonita = [1, 2, 3, 4, 5];
+
+        for (let numero of arrayBonita) {
+            numero = arrayBonita.indexOf(1);
+
+            console.log("A soma de todos os valores da array Bonita é: " + numero);
+        }
+    }
+
+    function exerciciosDeLogicaDeProgramacao_1c() {
+        // Exercicio 1a
+        /* Na função abaixo eu irei exemplificar a primeira maneira de iterar sobre uma lista/array. */
+
+        const arrayBonita = [1, 2, 3, 4, 5];
+
+        for (let numero of arrayBonita) {
+            numero = arrayBonita.indexOf(1);
+
+            console.log("A soma de todos os valores da array Bonita é: " + numero);
+        }
+    }
+
+    function exerciciosDeLogicaDeProgramacao_2() {
+        // Exercicio a) false
+        // Exercicio b) false
+        // Exercicio c) true
+        // Exercicio d) false
+        // Exercicio e) true
+    }
+
+    function exerciciosDeLogicaDeProgramacao_3() {
+        const quantidadeDeNumerosPares = 3;
+        let i = 0;
+        while (i < quantidadeDeNumerosPares) {
+            const array = [i]
+            array.push(i++ * 2);
+
+            console.log(array);
+        }
+    }
+
+    function exerciciosDeLogicaDeProgramacao_4(a, b, c) {
+
+        if (a === b && b === c) {
+            console.log("O triângulo é equilátero.")
+        } else if (a === b && b !== c) {
+            console.log("O triângulo é isósceles.")
+        } else if (b === c && c !== a) {
+            console.log("O triângulo é isósceles.")
+        } else if (a === c && c !== b) {
+            console.log("O triângulo é isósceles.")
+        } else if (a !== b && b !== c && c !== a) {
+            console.log("O triângulo é escaleno.")
+        }
+    }
+
+    function exerciciosDeLogicaDeProgramacao_5() {
+        const numero1 = Number(prompt("Digite o valor do número 1."));
+        const numero2 = Number(prompt("Digite o valor do número 2."));
+
+        if (numero1 > numero2) {
+            console.log("Maior número: " + numero1)
+        } else {
+            console.log("Maior número: " + numero2)
+        }
+
+        if (numero1 < numero2) {
+            console.log(numero1, " não é divisível por ", numero2);
+            if (numero2 % numero1 === 0) {
+                console.log(numero2, " é divisível por ", numero1);
+            } else {
+                console.log(numero2, " não divisível por ", numero1);
+            }
+        } else {
+            console.log(numero2, " não e divisível por ", numero1);
+            if (numero1 % numero2 === 0) {
+                console.log(numero1, " é divisível por ", numero2);
+            } else {
+                console.log(numero1, " não divisível por ", numero2);
+            }
+        }
+    }
+
+    function exerciciosDeFuncoes_1(array) {
+
+    }
+
+    const exerciciosDeFuncoes_2 = function () {
+        alert("Hello Future4");
+    }
+
+    function exerciciosDeObjetos_1() {
+        // Objetos: São variáveis que possuem diversas propriedades que podem ser utilizadas como métodos para aquele objeto ou, "subvariáveis."
+        // Arrays: São variáveis que podemos armazenar múltiplos valores dentro dela, e podemos utilizar todos esses valores para fazermos operações
+        // lógicas e aritméticas, de concatenação etc.
+        // Devemos utilizar arrays quando formos realizar operações que envolvem diversos valores, e objetos são voltados para guardar métodos e propriedades
+        // de uma determinada variável.
+    }
+
+    function exerciciosDeObjetos_2(lado1, lado2) {
+        const retangulo = {
+            largura: lado1,
+            altura: lado2,
+            perimetro: 2 * (lado1 + lado2),
+            area: lado1 * lado2
+        }
+
+        console.log(retangulo);
+    }
+
+    function exerciciosDeObjetos_3() {
+        const meuFilmeFavorito = {
+            titulo: "Vingadores: Ultimato",
+            ano: "2019",
+            diretor: "Russo Brothers",
+            atores: ["Robert Downey Jr., " + "Chris Evans e " + "Mark Ruffalo."]
+        }
+
+        const renderizaMeuFilmeFavorito = document.getElementById("MeuFilmeFavorito");
+
+        renderizaMeuFilmeFavorito.innerHTML += "Venha assistir ao filme " + meuFilmeFavorito.titulo +
+            ", de " + meuFilmeFavorito.ano + ", dirigido por " +
+            meuFilmeFavorito.diretor + " e estrelado por " +
+            meuFilmeFavorito.atores;
+    }
+
+    function exerciciosDeObjetos_4() {
+        const pessoa = {
+            nome: "José",
+            idade: 23,
+            email: "Jose.Arruda@gmail.com",
+            endereco: "Avenida Paulista, 478, São Paulo, SP"
+        }
+
+        const anonimizarPessoa = function () {
+            pessoa.nome = "ANÔNIMO";
+
+            return pessoa;
+        }
+
+        console.log(anonimizarPessoa());
+    }
+
+    function exercicioDeArrays_1a() {
+        const pessoas = [
+            { nome: "Pedro", idade: 20 },
+            { nome: "João", idade: 10 },
+            { nome: "Paula", idade: 12 },
+            { nome: "Artur", idade: 89 }
+        ]
+
+        const pessoasAdultas = pessoas.filter((pessoa) => {
+            return pessoa.idade >= 20;
+        })
+
+        console.log("As pessoas adultas são: ", pessoasAdultas);
+    }
+
+    function exercicioDeArrays_1b() {
+        const pessoas = [
+            { nome: "Pedro", idade: 20 },
+            { nome: "João", idade: 10 },
+            { nome: "Paula", idade: 12 },
+            { nome: "Artur", idade: 89 }
+        ]
+
+        const criancasEadolescentes = pessoas.filter((pessoa) => {
+            return pessoa.idade < 20;
+        })
+
+        console.log("As pessoas crianças/adolescentes são: ", criancasEadolescentes);
+    }
+
+    function exercicioDeArrays_2a() {
+        const array = [1, 2, 3, 4, 5, 6];
+
+        const arrayTimes2 = array.map((numero) => {
+            return numero * 2;
+        })
+
+        console.log(arrayTimes2);
+    }
+
+    function exercicioDeArrays_2b() {
+        const array = [1, 2, 3, 4, 5, 6];
+
+        const arrayTimes3PlusStrings = array.map((numero) => {
+            return String(numero * 3);
+        })
+
+        console.log(arrayTimes3PlusStrings);
+    }
+
+    function exercicioDeArrays_2c() {
+        const array = [1, 2, 3, 4, 5, 6];
+
+        const arrayStringsNumerosParesEimpares = array.map((numero) => {
+            if (numero % 2 === 0) {
+                return numero = String(numero + " é par");
+            } else {
+                return numero = String(numero + " é ímpar");
+            }
+        })
+
+        console.log(arrayStringsNumerosParesEimpares);
+    }
+
+    function exercicioDeArrays_3a() {
+        const pessoas = [
+            { nome: "Paula", idade: 12, altura: 1.8 },
+            { nome: "João", idade: 20, altura: 1.3 },
+            { nome: "Pedro", idade: 15, altura: 1.9 },
+            { nome: "Luciano", idade: 22, altura: 1.8 },
+            { nome: "Artur", idade: 10, altura: 1.2 },
+            { nome: "Soter", idade: 70, altura: 1.9 }
+        ]
+
+        const pessoasQuePodemEntrarNoBrinquedo = pessoas.filter((pessoa) => {
+            return pessoa.altura >= 1.5 && pessoa.idade > 15 && pessoa.idade < 60; 
+        })
+
+        console.log("As pessoas que podem entrar no brinquedo são: ", pessoasQuePodemEntrarNoBrinquedo);
+    }
+
+    function exercicioDeArrays_3b() {
+        const pessoas = [
+            { nome: "Paula", idade: 12, altura: 1.8 },
+            { nome: "João", idade: 20, altura: 1.3 },
+            { nome: "Pedro", idade: 15, altura: 1.9 },
+            { nome: "Luciano", idade: 22, altura: 1.8 },
+            { nome: "Artur", idade: 10, altura: 1.2 },
+            { nome: "Soter", idade: 70, altura: 1.9 }
+        ]
+
+        const pessoasQueNaoPodemEntrarNoBrinquedo = pessoas.filter((pessoa) => {
+            return pessoa.altura < 1.5 || pessoa.idade < 15 || pessoa.idade > 60; 
+        })
+
+        console.log("As pessoas que não podem entrar no brinquedo são: ", pessoasQueNaoPodemEntrarNoBrinquedo);
+    }
+
+    exercicioDeArrays_3b();
+
+</script>
+
+</html>
