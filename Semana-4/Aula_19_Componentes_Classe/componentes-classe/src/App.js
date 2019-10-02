@@ -4,6 +4,7 @@ import { Post } from './components/Entire Post/Post';
 import { Image } from './components/Image/Image';
 import { Buttons } from './components/Buttons Section/Buttons';
 import { CommentSection } from './components/Comment Section/Comment';
+import { Username } from './components/Username/Username';
 
 class App extends React.Component {
   constructor(props){
@@ -54,16 +55,16 @@ class App extends React.Component {
     let botaoEnviar = '';
 
     if(this.state.botaoDeComentarioBoolean) {
-      inputTexto = (<input type="text" placeholder="Escreva um comentário" />);
-      botaoEnviar = (<button onClick={this.darComment}>Enviar!</button>);
+      inputTexto = (<input id="comment_input" type="text" placeholder="Escreva um comentário" />);
+      botaoEnviar = (<button id="comment_button" onClick={this.darComment}>Enviar!</button>);
     }
 
     return (
       <div className="App">
         <Post>
-          <Post imageSource={'https://picsum.photos/25/25'} />
-          <Post username={'Davi'} />
-          <Image imageSource={'https://picsum.photos/200/200'} />
+          <Username imageSource={'https://picsum.photos/25/25'} />
+          <Username username={'Davi'} />
+          <Image imageSource={'https://picsum.photos/300/300'} />
           <Buttons 
             likeButton={this.state.sinalDislike} onClickButton={this.darLike}
             contadorLike={this.state.botaoDoLike}
