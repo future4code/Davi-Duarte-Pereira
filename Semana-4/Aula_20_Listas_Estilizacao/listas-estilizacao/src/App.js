@@ -3,28 +3,45 @@ import styled from 'styled-components'
 
 /* Apenas para testar se está funcionando o styled components */
 
-const MainApp = styled.div`  
+const MainApp = styled.div`
+  max-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   
 `
 
-const Post = styled.section`  
+const Post = styled.section`
+  border: 1px solid black;
+  margin-top: 10px;
 `
 
-const UsernameSection = styled.menu`  
+const UsernameSection = styled.menu`
+  display: flex;
+  margin: 10px 0;
+  padding: 0;  
 `
 
 const UsernameProfile = styled.p`
+  margin-left: 10px;
+`
+
+const UsernamePicture = styled.img`
+  border-radius: 50%;
+  border: 1px solid black;
 `
 
 const Image = styled.img`
 `
 
 const ButtonsSection = styled.div`
+  display: flex;
 `
 
 const LikeButton = styled.img`
 `
 
 const ContadorLike = styled.p`
+  flex-grow: 1;
 `
 
 const CommentButton = styled.img`
@@ -39,6 +56,12 @@ const CommentSection = styled.div`
 const NewPostForm = styled.div`
 `
 
+const NewPostGreetings = styled.h1`
+`
+
+const NewPostGreetingsMessage = styled.p`
+`
+
 const UserName = styled.input`
 `
 
@@ -51,8 +74,9 @@ const UserPostPic = styled.input`
 const NewPostButton = styled.button`
 `
 
-const NewPostArea = styled.ul`
+const NewPostArea = styled.div`
 `
+
 
 class App extends React.Component {
   constructor(props){
@@ -102,8 +126,25 @@ class App extends React.Component {
     this.setState(novoEstado);
   };
 
+  adicionarPost = () => {
+    const novoPost = {
+      userName: this.state.userName,
+      urlProfilePic: this.state.urlProfilePic,
+      urlPostPic: this.state.urlPostPic
+    }
+
+    const copiaListaDePosts = [...this.state.listaDePosts, novoPost]
+
+    this.setState({
+      listaDePosts: copiaListaDePosts,
+      userName: '',
+      urlProfilePic: '',
+      urlPostPic: ''
+    })
+  }
+
   onChangeUsername = (event) => {
-    this.setState({UserName: event.target.value})
+    this.setState({userName: event.target.value})
   }
 
   onChangeProfilePic = (event) => {
@@ -114,6 +155,7 @@ class App extends React.Component {
     this.setState({urlPostPic: event.target.value})
   }
 
+
   render(){
     let inputTexto = '';
     let botaoEnviar = '';
@@ -123,26 +165,34 @@ class App extends React.Component {
       botaoEnviar = (<button id="comment_button" onClick={this.darComment}>Enviar!</button>);
     }
 
+    const listaDePostsRenderizados = this.state.listaDePosts.map((item, index) => {
+      return <Post key={index}>
+        <UsernameSection>
+          <UsernamePicture src={item.urlProfilePic} />
+          <UsernameProfile>{item.userName}</UsernameProfile>
+        </UsernameSection>
+        <Image src={item.urlPostPic} />
+        <ButtonsSection>
+          <LikeButton src={this.state.sinalDislike} onClick={this.darLike} />
+          <ContadorLike>{this.state.botaoDoLike}</ContadorLike>
+          <CommentButton src={this.state.botaoDeComentario} onClick={this.showCommentSection} />
+          <ContadorComment>{this.state.botaoDoComment}</ContadorComment>
+        </ButtonsSection>
+        <CommentSection>
+        {inputTexto}
+        {botaoEnviar}
+        </CommentSection>
+      </Post>
+    })
+
     return (
       <MainApp>
-        <Post>
-          <UsernameSection>
-            <UsernameProfile>Davi</UsernameProfile>
-          </UsernameSection>
-          <Image src="https://picsum.photos/300/300"/>
-          <ButtonsSection>
-            <LikeButton src={this.state.sinalDislike} onClick={this.darLike} />
-            <ContadorLike>{this.state.botaoDoLike}</ContadorLike>
-            <CommentButton src={this.state.botaoDeComentario} onClick={this.showCommentSection} />
-            <ContadorComment>{this.state.botaoDoComment}</ContadorComment>
-          </ButtonsSection>
-          <CommentSection>
-          {inputTexto}
-          {botaoEnviar}
-          </CommentSection>
-        </Post>
-
         <NewPostForm>
+        <NewPostGreetings>Novo post do insta4</NewPostGreetings>
+        <NewPostGreetingsMessage>
+          Bem vindo à plataforma do insta4! Gostaria de realizar um post? Preencha
+          o formulário abaixo, e você verá a mágica acontecer.
+        </NewPostGreetingsMessage>
         <UserName
           type="text"
           placeholder="Nome de usuário"
@@ -161,11 +211,11 @@ class App extends React.Component {
           value={this.state.urlPostPic}
           onChange={this.onChangePostPic}
         />
-        <NewPostButton>Postar!</NewPostButton>
+        <NewPostButton onClick={this.adicionarPost}>Postar!</NewPostButton>
         </NewPostForm>
 
         <NewPostArea>
-
+          {listaDePostsRenderizados}
         </NewPostArea>
       </MainApp>
     );
