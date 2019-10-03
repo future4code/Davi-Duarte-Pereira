@@ -1,0 +1,4 @@
+section#main-box {
+    grid-column: 2 / 3;
+    border: 1px solid black;
+}

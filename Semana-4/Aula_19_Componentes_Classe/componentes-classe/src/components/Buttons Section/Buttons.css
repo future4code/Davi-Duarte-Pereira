@@ -1,0 +1,7 @@
+#whole-buttons-section {
+    display: flex;
+}
+
+p#like-contador {
+    flex-grow: 1
+}
