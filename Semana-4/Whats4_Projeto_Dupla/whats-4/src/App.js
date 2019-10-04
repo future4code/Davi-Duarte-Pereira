@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { InputDeMensagem } from './components/InputDeMensagem';
 import { BigCard } from './components/BigCard';
 import { QuadroDeMensagem } from './components/QuadroDeMensagem';
+import { QuadroDeMensagemContainer } from './components/QuadroDeMensagemContainer';
 
 const MainAppContainer = styled.div`
   max-width: 100vw;
@@ -23,17 +24,46 @@ class App extends React.Component {
     };
   }
 
+  adicionarMensagem = () => {
+    const mensagens = {
+      mensagem: this.state.mensagem,
+      usuarioNome: this.state.usuarioNome
+    }
+
+    const arrayDeMensagens = [...this.state.listaDeMensagem, mensagens]
+
+    this.setState({
+      listaDeMensagem: arrayDeMensagens,
+      mensagem: '',
+    })
+  }
+
+  onChangeUsuario = (event) => {
+    this.setState({usuarioNome: event.target.value})
+  }
+
+  onChangeTexto = (event) => {
+    this.setState({mensagem: event.target.value})
+  }
+
   render(){
+    const listaDeElementos = this.state.listaDeMensagem.map((item, index) => {
+      return <QuadroDeMensagem key={index} usuario={item.usuarioNome} mensagem={item.mensagem} />
+    })
+
     return (
       <MainAppContainer>
         <BigCard>
-          <QuadroDeMensagem 
-          />
+          <QuadroDeMensagemContainer>
+            {listaDeElementos}
+          </QuadroDeMensagemContainer>
           <InputDeMensagem 
             placeholderUsuario={"Nome"}
             placeholderMensagem={"Mensagem"}
-            valorMensagem={"Teste"}
-            valorUsuario={"Nome teste"}
+            valueDaMensagem={this.state.mensagem}
+            onChangeFunctionUser={this.onChangeUsuario}
+            onChangeFunctionText={this.onChangeTexto}
+            onClickFunction={this.adicionarMensagem}
           />
         </BigCard>
       </MainAppContainer> 

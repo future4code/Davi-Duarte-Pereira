@@ -3,9 +3,11 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     height: 100vh;
-    border: 1px solid blue;
+    border: 5px solid black;
     display: flex;
     flex-direction: column;
+    background: #E5DDD5;
+
 `
 
 export function BigCard(props) {
