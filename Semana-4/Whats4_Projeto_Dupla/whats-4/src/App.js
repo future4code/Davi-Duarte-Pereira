@@ -1,5 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
 import { InputDeMensagem } from './components/InputDeMensagem';
+import { BigCard } from './components/BigCard';
+
+const MainAppContainer = styled.div`
+  max-width: 100vw;
+  height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
 
 class App extends React.Component {
   constructor(props){
@@ -11,12 +22,12 @@ class App extends React.Component {
   render(){
 
     return (
-      <div className="App">
-        <div className="Container">
+      <MainAppContainer>
+        <BigCard>
           <div className="QuadroDeMensagens"></div>
           <InputDeMensagem />
-        </div>
-      </div> 
+        </BigCard>
+      </MainAppContainer> 
     );
   }
 };
