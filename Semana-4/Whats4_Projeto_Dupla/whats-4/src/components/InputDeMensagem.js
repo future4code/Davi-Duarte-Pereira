@@ -3,18 +3,20 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ContainerInput = styled.div`
-    border: 1px solid black;
+    display: flex;
 `
 const InputUsuario = styled.input`
     border: 1px solid black;
+    width: 20%;
 `
 
 const InputMensagem = styled.input`
     border: 1px solid black;
+    width: 50%;
 `
 
 const BotaoDeEnvio = styled.button`
-    background: orange;
+    flex-grow: 1;
 `
 export function InputDeMensagem(props) {
     return (
