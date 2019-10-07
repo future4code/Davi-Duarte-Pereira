@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ToDoList } from './components/ToDoList'
-import { DoneList } from './components/DoneList'
 
 const MainAppContainer = styled.div`
   box-sizing: border-box;
@@ -28,7 +27,6 @@ class App extends React.Component{
       <MainAppContainer>
         <TasksContainer>
           <ToDoList/>
-          <DoneList />
         </TasksContainer>
       </MainAppContainer>
     );
