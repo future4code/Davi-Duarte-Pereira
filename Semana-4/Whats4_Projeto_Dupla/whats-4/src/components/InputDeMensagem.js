@@ -55,7 +55,7 @@ export function InputDeMensagem(props) {
                 onChange={props.onChangeFunctionText} 
                 value={props.valueDaMensagem} 
             />
-            <BotaoDeEnvio onClick={props.onClickFunction}>Enviar mensagem!</BotaoDeEnvio>
+            <BotaoDeEnvio onClick={props.onClickFunction}>Enviar mensagem</BotaoDeEnvio>
         </ContainerInput>
     );
 }
