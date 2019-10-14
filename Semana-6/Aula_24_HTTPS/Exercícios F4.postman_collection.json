@@ -1,0 +1,231 @@
+{
+	"info": {
+		"_postman_id": "3c2c1815-e634-48e4-b942-3810835bf614",
+		"name": "Exercícios F4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createPlaylist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "auth",
+						"value": "2e5d5c8bae5833240293b84f2249cff3",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Teste\"\n}"
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/createPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"createPlaylist"
+					]
+				},
+				"description": "Para os exercícios 1, 11b, 11e."
+			},
+			"response": []
+		},
+		{
+			"name": "getAllPlaylists",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth",
+						"name": "Content-Type",
+						"value": "2e5d5c8bae5833240293b84f2249cff3",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "2e5d5c8bae5833240293b84f2249cff3"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getAllPlaylists?auth=2e5d5c8bae5833240293b84f2249cff3",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"getAllPlaylists"
+					],
+					"query": [
+						{
+							"key": "auth",
+							"value": "2e5d5c8bae5833240293b84f2249cff3"
+						}
+					]
+				},
+				"description": "Utilizado nos exercícios 2, 4, 5, 11a, 11b."
+			},
+			"response": []
+		},
+		{
+			"name": "addMusicToPlaylist",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "auth",
+						"value": "2e5d5c8bae5833240293b84f2249cff3",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"playlistId\": \"a1b704ba-5232-472c-8219-7cde36793970\",\r\n\t\"music\": { \r\n        \"name\": \"Master Of Puppets\", \r\n        \"artist\": \"Metallica\"\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/addMusicToPlaylist",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"addMusicToPlaylist"
+					]
+				},
+				"description": "Utilizado nos exercícios 3, 5, 7, 9, 11c"
+			},
+			"response": []
+		},
+		{
+			"name": "getPlaylistMusics",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth",
+						"value": "2e5d5c8bae5833240293b84f2249cff3",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/getPlaylistMusics/008e2bfa-e3d7-40aa-b916-5653bc4bf90f",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"getPlaylistMusics",
+						"008e2bfa-e3d7-40aa-b916-5653bc4bf90f"
+					]
+				},
+				"description": "Utilizado nos exercícios 4, 6, 8, 10, 11c, 11d, 11e."
+			},
+			"response": []
+		},
+		{
+			"name": "removeMusicFromPlaylist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "auth",
+						"value": "2e5d5c8bae5833240293b84f2249cff3",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/removeMusicFromPlaylist?playlistId=75883ca3-7ee2-46b8-ba4d-1a8112aef259&musicId=c240633c-79bd-4c86-a383-8e0ade203077",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"removeMusicFromPlaylist"
+					],
+					"query": [
+						{
+							"key": "playlistId",
+							"value": "75883ca3-7ee2-46b8-ba4d-1a8112aef259"
+						},
+						{
+							"key": "musicId",
+							"value": "c240633c-79bd-4c86-a383-8e0ade203077"
+						}
+					]
+				},
+				"description": "Utilizado nos exercícios 9, 11d."
+			},
+			"response": []
+		},
+		{
+			"name": "deletePlaylist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "auth",
+						"value": "2e5d5c8bae5833240293b84f2249cff3",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://us-central1-spotif4.cloudfunctions.net/api/playlists/deletePlaylist?playlistId=325df0eb-63e6-437d-828d-432ca18423bd",
+					"protocol": "https",
+					"host": [
+						"us-central1-spotif4",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"api",
+						"playlists",
+						"deletePlaylist"
+					],
+					"query": [
+						{
+							"key": "playlistId",
+							"value": "325df0eb-63e6-437d-828d-432ca18423bd"
+						}
+					]
+				},
+				"description": "Utilizado no exercício 11a. "
+			},
+			"response": []
+		}
+	]
+}
