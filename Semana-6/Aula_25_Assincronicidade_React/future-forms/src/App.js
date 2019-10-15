@@ -34,13 +34,12 @@ class App extends React.Component {
   }
 
   render(){
-    const showUser = this.state.userSection ? (<RegisteredUsers />) : (<div></div>)
+    const showUser = this.state.userSection ? (<RegisteredUsers />) : (<SignIn />)
 
 
     return (
       <MainAppContainer>
         <Button onClick={this.showUserSection}>Mostrar a página de listas</Button>
-        <SignIn />
         {showUser}
       </MainAppContainer>
     );
