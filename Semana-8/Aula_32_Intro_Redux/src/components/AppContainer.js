@@ -1,6 +1,9 @@
 import React from 'react'
 import TaskCard from './TaskFeature/TaskCard'
 import styled from 'styled-components'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import rootReducer from '../reducers'
 
 const MainWrapper = styled.div`
 	width: 100vw;
@@ -10,15 +13,20 @@ const MainWrapper = styled.div`
 	justify-content: center;
 `
 
-export class AppContainer extends React.Component {
-	constructor(props) {
-		super(props)
-	}
+const devTools =
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
-	render() {
-		return <MainWrapper>
-			<h2>4Task</h2>
-			<TaskCard />
-		</MainWrapper>
-	}
+
+const store = createStore(rootReducer, devTools);
+
+
+export function AppContainer(){
+	return (
+		<Provider store={store}>
+			<MainWrapper>
+				<h2>4Task</h2>
+				<TaskCard />
+			</MainWrapper>
+		</Provider>
+	)
 }
