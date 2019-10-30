@@ -1,25 +1,43 @@
-import { createNewTask, removeTask, unmarkAsCompleted, markAsCompleted } from '../constants/constants'
+import { createNewTask, removeTask, unmarkAsCompleted, markAsCompleted, setNewTask, addNewTask } from '../constants/constants'
 
-const initialState = {
-	taskValue: "",
-	createNewTask: false,
-	removeTask: false,
-	unmarkAsCompleted: false,
-	markAsCompleted: false,
-}
+const initialState = [
+	{
+		id: 1,
+		text: 'Aprender Redux',
+		taskFinished: false,
+		clearTask: false,
+	},
+	{
+		id: 2,
+		text: 'Terminar o projeto',
+		taskFinished: false,
+		clearTask: false,
+	}
+]
 
 const taskHandler = (state = initialState, action) => {
 	switch (action.type) {
-	  case createNewTask:
-		return { ...state, createNewTask: true };
-	  case removeTask:
-		return { ...state, removeTask: true };
-	  case unmarkAsCompleted:
-		return { ...state, unmarkAsCompleted: true };
-	  case markAsCompleted:
-		return { ...state, markAsCompleted: true };
-	  case taskValue:
-		return { ...state, taskValue: true };
+	  case addNewTask:
+		  const newTask = {
+			  text: action.payload.text,
+			  id: action.payload.id,
+			  taskFinished: action.payload.taskFinished
+		  }
+		  return [newTask, ...state]
+		case setNewTask:
+			return action.payload.taskList
+		case removeTask:
+			const newState = state.map(task => {
+				if (task.id === action.payload.id) {
+					return {
+						...task,
+						clearTask: true
+					};
+				} else {
+					return task;
+				}
+			});
+			return newState.filter(task => task.clearTask === false);
 	  default:
 		return state;
 	}

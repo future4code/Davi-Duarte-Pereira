@@ -15,3 +15,7 @@ export const removeAllCompleted = "REMOVE_ALL_COMPLETED";
 export const removeTask = "REMOVE_TASK";
 
 export const createNewTask = "CREATE_NEW_TASK";
+
+export const setNewTask = "SET_NEW_TASK";
+
+export const addNewTask = "ADD_NEW_TASK";

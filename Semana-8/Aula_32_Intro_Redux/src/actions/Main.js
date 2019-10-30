@@ -1,7 +1,7 @@
 import { 
 	unmarkAsCompleted, markAsCompleted, markAllAsCompleted, 
 	filterAll, filterRemaining, filterCompleted, 
-	removeAllCompleted, removeTask, createNewTask 
+	removeAllCompleted, removeTask, createNewTask, setNewTask, addNewTask 
 } from '../constants/constants'
 
 export const unmarkAsCompletedAction = taskId => {
@@ -52,21 +52,31 @@ export const removeAllCompletedAction = () => {
 	};
 };  
 
-export const removeTaskAction = taskId => {
+export const removeTaskAction = id => {
 	return {
 	  type: removeTask,
 	  payload: {
-		taskId: taskId
+		taskId: id
 	  }
 	};
 };  
 
-export const createNewTask = (description, taskId) => {
+export const addNewTaskAction = (text, id, taskFinished) => {
 	return {
-	  type: unmarkAsCompleted,
+	  type: addNewTask,
 	  payload: {
-		  description: description,
-		  taskId: taskId,
+		  text: text,
+		  id: id,
+		  taskFinished: taskFinished
 	  }
 	};
-};  
+};
+
+export const setNewTaskAction = taskList => {
+	return {
+		type: setNewTask,
+		payload: {
+			taskList: taskList,
+		}
+	}
+}

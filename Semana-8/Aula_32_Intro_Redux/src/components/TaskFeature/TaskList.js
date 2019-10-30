@@ -1,27 +1,30 @@
 import React from 'react'
-import styled from 'styled-components'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
-import ListItemText from '@material-ui/core/ListItemText'
-import IconButton from '@material-ui/core/IconButton'
-import Checkbox from '@material-ui/core/Checkbox'
-import ClearIcon from '@material-ui/icons/Clear'
+import Tasks from './Tasks'
+import { connect } from "react-redux"
+import { removeTaskAction } from '../../actions/Main'
 
-function TaskList(){
-	return(
-		<List>
-			<ListItem>
-				<Checkbox />
-				<ListItemText primary={'Teste'} />
-				<ListItemSecondaryAction>
-					<IconButton>
-						<ClearIcon />
-					</IconButton>
-				</ListItemSecondaryAction>
-			</ListItem>
-		</List>
-	)
-}
+class TaskList extends React.Component{
+	constructor(props){
+		super(props);
+		this.state = {}
+	}
 
-export default TaskList;
+	render(){
+		return this.props.taskList.map(task => (
+			<Tasks tasks={task} clearTask={this.props.onClearTask} />
+		));
+	};
+};
+
+const mapStateToProps = state => ({
+	taskList: state.tasks
+});
+
+const mapDispatchToProps = dispatch => {
+	return {
+		onClearTask: id => dispatch(removeTaskAction(id))
+	};
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskList);

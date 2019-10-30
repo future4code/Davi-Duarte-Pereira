@@ -1,9 +1,9 @@
 import React from 'react'
-import TaskCard from './TaskFeature/TaskCard'
+import MainTaskCard from './TaskFeature/MainTaskCard'
 import styled from 'styled-components'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import rootReducer from '../reducers'
+import  rootReducer  from '../reducers/Main'
 
 const MainWrapper = styled.div`
 	width: 100vw;
@@ -25,7 +25,7 @@ export function AppContainer(){
 		<Provider store={store}>
 			<MainWrapper>
 				<h2>4Task</h2>
-				<TaskCard />
+				<MainTaskCard />
 			</MainWrapper>
 		</Provider>
 	)

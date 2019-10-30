@@ -5,7 +5,7 @@ import actionButtons from './ActionButtons'
 
 const rootReducer = combineReducers ({
 	filters: filters,
-	taskHandler: taskHandler,
+	tasks: taskHandler,
 	actionButtons: actionButtons,
 });
 
