@@ -5,7 +5,7 @@ import {AppBar} from '../../components/AppBar'
 import {mdiAccountSwitch} from '@mdi/js'
 import {updateCurrentPage} from '../../actions/route'
 import {Avatar, List, ListItem, ListText, MatchIcon} from './styled'
-import { requestMatches } from '../../actions/profiles'
+import { requestMatches } from '../../actions/matches'
 
 
 class MatchScreen extends Component {
@@ -47,7 +47,7 @@ MatchScreen.propTypes = {
 }
 
 const mapStateToProps = state => ({
-	matches: state.profiles.matches
+	matches: state.matches
 })
 
 const mapDispatchToProps = dispatch => ({

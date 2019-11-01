@@ -41,28 +41,10 @@ export const requestChosenProfile = (id) => async () => {
 		'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/davi/choose-person',
 		data
 	).then((res) => {
-		console.log("It's a match!", res);
+
 	}).catch((err) => {
 		console.log(err);
 	})
 };
 
-export const showMatches = (name, photo) => ({
-	type: "SHOW_MATCHES",
-	payload: {
-		name,
-		photo,
-	}
-});
-
-export const requestMatches = () => async (dispatch) => {
-	await axios.get(
-		"https://us-central1-missao-newton.cloudfunctions.net/astroMatch/davi/matches"
-	).then((res) => {
-		dispatch(showMatches(
-			res.data.matches.name,
-			res.data.matches.photo,
-		))
-	})
-};
 

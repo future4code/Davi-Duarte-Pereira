@@ -4,7 +4,6 @@ const initialState = {
   photo: '',
   bio: '',
   age: '',
-  matches: []
 }
 
 const profiles = (state = initialState, action) => {
@@ -20,11 +19,6 @@ const profiles = (state = initialState, action) => {
         age: action.payload.age,
       }
       return profileToBeShown;
-    case "SHOW_MATCHES":
-      const matches = {
-        ...state,
-        matches: [{name: action.payload.name, photo: action.payload.photo}]}
-      return matches;
     default:
       return null
   }
