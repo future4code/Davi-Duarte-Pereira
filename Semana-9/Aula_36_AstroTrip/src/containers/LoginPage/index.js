@@ -5,6 +5,8 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import styled from "styled-components";
 import { routes } from "../Router";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 const LoginWrapper = styled.form`
   width: 100%;
@@ -34,30 +36,37 @@ class LoginPage extends Component {
     const { email, password } = this.state;
 
     return (
-      <LoginWrapper>
-        <TextField
-          onChange={this.handleFieldChange}
-          name="email"
-          type="email"
-          label="E-mail"
-          value={email}
+      <div>
+        <Header
+          OnClickToHome={this.props.goToHome} 
         />
-        <TextField
-          onChange={this.handleFieldChange}
-          name="password"
-          type="password"
-          label="Password"
-          value={password}
-        />
-        <Button onClick={this.props.goToHomePage}>Login</Button>
-      </LoginWrapper>
+        <LoginWrapper>
+          <TextField
+            onChange={this.handleFieldChange}
+            name="email"
+            type="email"
+            label="E-mail"
+            value={email}
+          />
+          <TextField
+            onChange={this.handleFieldChange}
+            name="password"
+            type="password"
+            label="Password"
+            value={password}
+          />
+          <Button onClick={this.props.goToTripsList}>Login</Button>
+        </LoginWrapper>
+        <Footer />
+      </div>
     );
   }
 }
 
 function mapDispatchToProps(dispatch){
   return {
-    goToHomePage: () => dispatch(push(routes.homePage))
+    goToHome: () => dispatch(push(routes.homePage)),
+    goToTripsList: () => dispatch(push(routes.trips))
   }
 }
 

@@ -11,7 +11,10 @@ const HomePage = (props) => {
         <div>
             <Header
              OnClickToHome={props.goToHome}  
-             OnClickToAdmLogin={props.GoToAdmLogin}
+             onClickToLogin={props.goToLogin}
+             onClickToAppForm={props.goToApplicationForm}
+             tripButton
+             createTripButton
             />
             <Footer />
         </div>
@@ -21,7 +24,8 @@ const HomePage = (props) => {
 function mapDispatchToProps(dispatch){
     return {
         goToHome: () => dispatch(push(routes.homePage)),
-        GoToAdmLogin: () => dispatch(push(routes.admLogin))
+        goToLogin: () => dispatch(push(routes.login)),
+        goToApplicationForm: () => dispatch(push(routes.applicationForm)),
     }
 }
 

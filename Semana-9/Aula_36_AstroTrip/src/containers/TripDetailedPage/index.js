@@ -1,0 +1,51 @@
+import React from 'react'
+import { connect } from "react-redux"
+import { push } from "connected-react-router"
+import { routes } from '../Router'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+
+const TripDetailedPage = (props) => {
+    const {trip, tripCandidates} = props
+
+    return (
+        <div>
+            <Header
+             OnClickToHome={props.goToHome}
+             admInfo admName={"AstroDev"}
+             backToTripsListButton onClickToTripsList={props.goBackToTripsList} 
+            />
+            <div>
+                <p>Name: {trip.name}</p>
+                <p>Description: {trip.description}</p>
+                <p>Planet: {trip.planet}</p>
+                <p>Duartion of the trip in days: {trip.durationInDays}</p>
+                <p>Date: {trip.date}</p>
+                <h3>Candidates: </h3>
+                {tripCandidates.map((candidate) => (
+                    <div>
+                        <h2>{candidate.name}</h2>
+                        <p>Country: {candidate.country}</p>
+                        <p>Application text: {candidate.applicationText}</p>
+                        <p>{candidate.name} work as a {candidate.profession} and his age is {candidate.age}</p>
+                    </div>
+                ))}
+            </div>
+            <Footer />
+        </div>
+    )
+}
+
+const mapStateToProps = (state) => ({
+    trip: state.detailedTrip.trip,
+    tripCandidates: state.detailedTrip.trip.candidates
+})
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        goToHome: () => dispatch(push(routes.homePage)),
+        goBackToTripsList: () => dispatch(push(routes.trips))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TripDetailedPage);

@@ -3,15 +3,17 @@ import { ConnectedRouter } from "connected-react-router";
 import { Switch, Route } from "react-router-dom";
 import LoginPage from "../LoginPage";
 import HomePage from "../HomePage";
+import TripsList from "../TripListPage";
+import TripDetailedPage from "../TripDetailedPage";
+import ApplicationFormPage from "../ApplicationFormPage";
 
 export const routes = {
   homePage: "/",
-  userLogin: "/user/login",
   trips: "/trips/list",
-  userTripDetails: "/trips/user/details",
-  admTripDetails: "/trips/adm/details",
+  tripDetails: "/trips/details",
+  tripCreate: "/trips/create",
   applicationForm: "/application-form",
-  admLogin: "/login",
+  login: "/login",
   // Outras rotas aqui
 };
 
@@ -20,7 +22,10 @@ function Router(props) {
     <ConnectedRouter history={props.history}>
       <Switch>
         <Route exact path={routes.homePage} component={HomePage} />
-        <Route path={routes.admLogin} component={LoginPage} />
+        <Route path={routes.login} component={LoginPage} />
+        <Route path={routes.trips} component={TripsList} />
+        <Route path={routes.tripDetails} component={TripDetailedPage} />
+        <Route path={routes.applicationForm} component={ApplicationFormPage} />
       </Switch>
     </ConnectedRouter>
   );
