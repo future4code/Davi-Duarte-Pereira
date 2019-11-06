@@ -18,7 +18,7 @@ class TripsList extends Component{
 
     render(){
 
-        const {tripsss, goToDetailedPage} = this.props
+        const {tripsList} = this.props
 
         return(
             <div>
@@ -28,7 +28,7 @@ class TripsList extends Component{
                 />
                 <div>
                     <ul>
-                        {tripsss && tripsss.map((trip) => (
+                        {tripsList && tripsList.map((trip) => (
                             <li
                              key={trip.id} 
                              onClick={() => this.props.getTripByIdAndGoToDetailedTripPage(trip.id)}
@@ -45,7 +45,7 @@ class TripsList extends Component{
 }
 
 const mapStateToProps = (state) => ({
-    tripsss: state.trips
+    tripsList: state.trips
 })
 
 function mapDispatchToProps(dispatch){

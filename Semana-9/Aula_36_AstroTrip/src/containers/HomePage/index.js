@@ -4,11 +4,16 @@ import { push } from "connected-react-router"
 import { routes } from '../Router'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import styled from 'styled-components'
+
+const HomePageWrapper = styled.div`
+    max-width: 100vw;
+`
 
 
 const HomePage = (props) => {
     return(
-        <div>
+        <HomePageWrapper>
             <Header
              OnClickToHome={props.goToHome}  
              onClickToLogin={props.goToLogin}
@@ -17,7 +22,7 @@ const HomePage = (props) => {
              createTripButton
             />
             <Footer />
-        </div>
+        </HomePageWrapper>
     )
 }
 

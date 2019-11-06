@@ -6,7 +6,7 @@ export const getTrips = () => async (dispatch) => {
     ).then((res) => {
         dispatch(displayTrips(res.data.trips))
     })
-}
+};
 
 export const getTripById = (id) => async (dispatch) => {
 	await axios.get(
@@ -15,7 +15,7 @@ export const getTripById = (id) => async (dispatch) => {
         console.log("dados: ", res.data)
         dispatch(displayDetailedTrip(res.data))
     })
-}
+};
 
 export const displayTrips = (trips) => ({
 	type: "DISPLAY_TRIPS",
@@ -30,3 +30,25 @@ export const displayDetailedTrip = (trip) => ({
 		trip,
 	}
 });
+
+
+export const getApplicationData = (tripId, data) => (dispatch) => {
+	const appData = {
+		tripId,
+		data,
+	}
+
+	dispatch(apllyToTrip(appData.tripId, appData.data));
+}
+
+
+export const apllyToTrip = async (tripId, data) => {
+	await axios.post(
+		`https://us-central1-missao-newton.cloudfunctions.net/futureX/davi/trips/${tripId}/apply`, 
+		data
+	).then(() => {
+		console.log("deu bom")
+	}).catch(() => {
+		console.log("deu ruim clan")
+	})
+};

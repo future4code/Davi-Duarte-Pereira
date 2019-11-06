@@ -7,91 +7,152 @@ import Footer from '../../components/Footer'
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import styled from "styled-components"
+import { Countries } from "../../constants/countries"
+import { getTrips, getApplicationData } from '../../actions/trips'
 
-const LoginWrapper = styled.form`
-  width: 100%;
-  height: 100vh;
-  gap: 10px;
-  place-content: center;
-  justify-items: center;
-  display: grid;
+
+// ESTILOS:
+const ApplicationFormWrapper = styled.form`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
 `;
+
+
+const StyledTextField = styled(TextField)`
+    width: 35%;
+`;
+
+const StyledSelectForTrips = styled.select`
+    width: 35%;
+`
+
+
+// OBJETO PARA O FORM:
+const applicationForm = [
+    {
+        name: "name",
+        type: "text",
+        label: "Your name",
+        required: true,
+        pattern: "^[a-zA-Z]{3,}",
+        tittle: "Your name should have at least 3 characters.",
+    },
+    {
+        name: "age",
+        type: "number",
+        label: "Age",
+        required: true,
+        pattern: false,
+        tittle: "You need to have 18 years at least to apply.",
+        min: 18
+    },
+    {
+        name: "applicationText",
+        type: "text",
+        label: "Tell us why you should be selected.",
+        required: true,
+        pattern: "^[a-zA-Z\s\\.,]{30,}",
+        tittle: "Your application text should have at least 30 characters.",
+    },
+    {
+        name: "profession",
+        type: "text",
+        label: "What you do for a living?",
+        required: true,
+        pattern: "^[a-zA-Z]{10,}",
+        tittle: "Your profession title should have at least 10 characters.",
+    }
+];
 
 class ApplicationFormPage extends Component {
     constructor(props){
         super(props);
         this.state ={
-            name: '',
-            age: '',
-            applicationText: '',
-            profession: '',
-            country: '',
-            trip: '',
+            form: {country: ""},
+            trip: ""
         };
+    };
+
+    componentDidMount(){
+        this.props.getTrips();
     }
 
     handleFieldChange = event => {
-        this.setState({
-          [event.target.name]: event.target.value
-        });
+        const { name, value } = event.target;
+
+        this.setState({form: {...this.state.form, [name]: value}});
+    };
+
+    handleTripInput = event => {
+        this.setState({trip: event.target.value})
+    }
+
+    handleOnSubmit = event => {
+        event.preventDefault();
+        this.props.sendApplicationForm(this.state.trip, this.state.form);
     };
 
     render() {
-        const { name, age, applicationText, profession, country, trip} = this.state;
+
+        const { trips } = this.props
 
         return(
             <div>
             <Header
                 OnClickToHome={this.props.goToHome} 
             />
-            <LoginWrapper>
-                <TextField
-                onChange={this.handleFieldChange}
-                name="name"
-                type="name"
-                label="Name"
-                value={name}
+            <ApplicationFormWrapper onSubmit={this.handleOnSubmit}>
+                {applicationForm.map((input) => (
+                        <StyledTextField
+                         key={input.name} 
+                         onChange={this.handleFieldChange} 
+                         name={input.name} 
+                         type={input.type} 
+                         label={input.label} 
+                         value={this.state.form[input.name] || ""}
+                         inputProps={
+                             {
+                                 required: input.required,
+                                 tittle: input.tittle,
+                                 pattern: input.pattern,
+                                 min: input.min
+                             }
+                         }
+                        />
+                )) }
+                <Countries
+                 name={"country"} 
+                 onChange={this.handleFieldChange} 
+                 value={this.state.form.country} 
                 />
-                <TextField
-                onChange={this.handleFieldChange}
-                name="age"
-                type="age"
-                label="Age"
-                value={age}
-                />
-                <TextField
-                onChange={this.handleFieldChange}
-                name="applicationText"
-                type="applicationText"
-                label="Application text"
-                value={applicationText}
-                />
-                <TextField
-                onChange={this.handleFieldChange}
-                name="profession"
-                type="profession"
-                label="Profession"
-                value={profession}
-                />
-                <TextField
-                onChange={this.handleFieldChange}
-                name="country"
-                type="country"
-                label="Country"
-                value={country}
-                />
-                <TextField
-                onChange={this.handleFieldChange}
-                name="trip"
-                type="trip"
-                label="Trip"
-                value={trip}
-                />
-                <Button>Send</Button>
-            </LoginWrapper>
+                <StyledSelectForTrips 
+                 onChange={this.handleTripInput} 
+                 value={this.state.trip}
+                >
+                    {trips.map((trip) => (
+                        <option
+                         key={trip.id} 
+                         value={trip.id}
+                        >
+                         {trip.name} - {trip.planet}
+                        </option>
+                    ))}
+                </StyledSelectForTrips>
+                <Button type="submit">Submit</Button>
+            </ApplicationFormWrapper>
             <Footer />
             </div>
         )
+    }
+}
+
+function mapStateToProps(state){
+    return {
+      trips: state.trips
     }
 }
 
@@ -99,7 +160,9 @@ class ApplicationFormPage extends Component {
 function mapDispatchToProps(dispatch){
     return {
       goToHome: () => dispatch(push(routes.homePage)),
+      getTrips: () => dispatch(getTrips()),
+      sendApplicationForm: (id, data) => dispatch(getApplicationData(id, data)),
     }
 }
   
-export default connect(null, mapDispatchToProps)(ApplicationFormPage);  
+export default connect(mapStateToProps, mapDispatchToProps)(ApplicationFormPage);  
