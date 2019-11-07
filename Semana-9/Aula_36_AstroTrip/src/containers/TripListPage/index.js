@@ -45,6 +45,7 @@ class TripsList extends Component{
                         ))}
                     </ul>
                 </div>
+                <button onClick={this.props.goToCreateTripPage}>Create a new trip</button>
                 <Footer />
             </div>
         )
@@ -58,6 +59,7 @@ const mapStateToProps = (state) => ({
 function mapDispatchToProps(dispatch){
     return {
         goToHome: () => dispatch(push(routes.homePage)),
+        goToCreateTripPage: () => dispatch(push(routes.tripCreate)),
         getTrips: () => dispatch(getTrips()),
         getTripByIdAndGoToDetailedTripPage: (id) => {
             dispatch(getTripById(id));

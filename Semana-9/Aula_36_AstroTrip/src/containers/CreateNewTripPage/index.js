@@ -7,8 +7,8 @@ import Footer from '../../components/Footer'
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import styled from "styled-components"
-import { Countries } from "../../components/Countries"
-import { getTrips, getApplicationData } from '../../actions/trips'
+import { getTrips, getApplicationData, createNewTrip } from '../../actions/trips'
+import { Planets } from '../../components/Planets'
 
 
 // ESTILOS:
@@ -29,56 +29,60 @@ const StyledTextField = styled(TextField)`
 const StyledSelectForTrips = styled.select`
     width: 35%;
 `
-
+// 
 
 // OBJETO PARA O FORM:
 const applicationForm = [
     {
         name: "name",
         type: "text",
-        label: "Your name",
+        label: "Set a name for the trip.",
         required: true,
-        pattern: "^[a-zA-Z\s\\.,-]{3,}",
-        tittle: "Your name should have at least 3 characters.",
+        pattern: "^[a-zA-Z\s\\.,-]{5,}",
+        tittle: "The name of the trip should have at least 5 characters.",
     },
+    // {
+    //     name: "date",
+    //     type: "date",
+    //     label: "When is it going to be?",
+    //     required: true,
+    //     pattern: "/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/",
+    //     tittle: "Your application text should have at least 30 characters.",
+    // },
     {
-        name: "age",
+        name: "durationInDays",
         type: "number",
-        label: "Age",
+        label: "Duration in days",
         required: true,
         pattern: false,
-        tittle: "You need to have at least 18 years old to apply.",
-        min: 18
+        tittle: "The duration must be greater or equal to 50 days.",
+        min: 50
     },
     {
-        name: "applicationText",
+        name: "description",
         type: "text",
-        label: "Tell us why you should be selected.",
+        label: "Describe the trip.",
         required: true,
         pattern: "^[a-zA-Z\s\\.,-]{30,}",
-        tittle: "Your application text should have at least 30 characters.",
-    },
-    {
-        name: "profession",
-        type: "text",
-        label: "What you do for a living?",
-        required: true,
-        pattern: "^[a-zA-Z\s\\.,-]{10,}",
-        tittle: "Your profession title should have at least 10 characters.",
+        tittle: "The description should have at least 30 characters.",
     }
 ];
 
-class ApplicationFormPage extends Component {
+class CreateNewTripPage extends Component {
     constructor(props){
         super(props);
         this.state ={
-            form: {country: ""},
-            trip: ""
+            form: {planet: "", date: ""},
         };
     };
 
     componentDidMount(){
-        this.props.getTrips();
+        const token = window.localStorage.getItem("token");
+
+        if (!token) {
+            window.alert("You are not authorized to enter this page. Please, login first.");
+            this.props.goToHome();
+        }
     }
 
     handleFieldChange = event => {
@@ -93,7 +97,8 @@ class ApplicationFormPage extends Component {
 
     handleOnSubmit = event => {
         event.preventDefault();
-        this.props.sendApplicationForm(this.state.trip, this.state.form);
+        console.log(this.state.form);
+        this.props.createNewTripForm(this.state.form);
     };
 
     render() {
@@ -103,7 +108,8 @@ class ApplicationFormPage extends Component {
         return(
             <div>
             <Header
-                OnClickToHome={this.props.goToHome} 
+                OnClickToHome={this.props.goToHome}
+                backToTripsListButton onClickToTripsList={this.props.goBackToTripsList} 
             />
             <ApplicationFormWrapper onSubmit={this.handleOnSubmit}>
                 {applicationForm.map((input) => (
@@ -124,24 +130,19 @@ class ApplicationFormPage extends Component {
                          }
                         />
                 )) }
-                <Countries
-                 name={"country"} 
-                 onChange={this.handleFieldChange} 
-                 value={this.state.form.country} 
+                <StyledTextField
+                 type="date" 
+                 name="date"
+                 helperText="When is it going to be?" 
+                 inputProps={{ min: new Date().getFullYear() + '-' + (Number(new Date().getMonth()) + 1) + '-' + Number(new Date().getDate()) }} 
+                 onChange={this.handleFieldChange}
+                 value={this.state.form.date}
                 />
-                <StyledSelectForTrips 
-                 onChange={this.handleTripInput} 
-                 value={this.state.trip}
-                >
-                    {trips.map((trip) => (
-                        <option
-                         key={trip.id} 
-                         value={trip.id}
-                        >
-                         {trip.name} - {trip.planet}
-                        </option>
-                    ))}
-                </StyledSelectForTrips>
+                <Planets
+                 name={"planet"} 
+                 onChange={this.handleFieldChange} 
+                 value={this.state.form.planet} 
+                />
                 <Button type="submit">Submit</Button>
             </ApplicationFormWrapper>
             <Footer />
@@ -160,9 +161,9 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
     return {
       goToHome: () => dispatch(push(routes.homePage)),
-      getTrips: () => dispatch(getTrips()),
-      sendApplicationForm: (id, data) => dispatch(getApplicationData(id, data)),
+      createNewTripForm: (data) => dispatch(createNewTrip(data)),
+      goBackToTripsList: () => dispatch(push(routes.trips))
     }
 }
   
-export default connect(mapStateToProps, mapDispatchToProps)(ApplicationFormPage);  
+export default connect(mapStateToProps, mapDispatchToProps)(CreateNewTripPage);  
