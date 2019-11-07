@@ -13,7 +13,14 @@ class TripsList extends Component{
     }
 
     componentDidMount(){
-        this.props.getTrips()
+        const token = window.localStorage.getItem("token");
+
+        if (!token) {
+            window.alert("You are not authorized to enter this page. Please, login first.");
+            this.props.goToHome();
+        } else {
+            this.props.getTrips();
+        }
     }
 
     render(){

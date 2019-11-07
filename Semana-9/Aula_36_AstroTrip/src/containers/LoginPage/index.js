@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { routes } from "../Router";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { login } from "../../actions/trips";
 
 const LoginWrapper = styled.form`
   width: 100%;
@@ -32,6 +33,14 @@ class LoginPage extends Component {
     });
   };
 
+  autenticateLogin = () => {
+    const { email, password } = this.state;
+    const { requestLogin } = this.props;
+
+    requestLogin(email, password);
+    this.setState({email: "", password: ""})
+  } 
+
   render() {
     const { email, password } = this.state;
 
@@ -55,7 +64,7 @@ class LoginPage extends Component {
             label="Password"
             value={password}
           />
-          <Button onClick={this.props.goToTripsList}>Login</Button>
+          <Button onClick={this.autenticateLogin}>Login</Button>
         </LoginWrapper>
         <Footer />
       </div>
@@ -66,7 +75,8 @@ class LoginPage extends Component {
 function mapDispatchToProps(dispatch){
   return {
     goToHome: () => dispatch(push(routes.homePage)),
-    goToTripsList: () => dispatch(push(routes.trips))
+    // goToTripsList: () => dispatch(push(routes.trips))
+    requestLogin: (email, password) => dispatch(login(email, password))
   }
 }
 

@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { routes } from '../containers/Router';
+import { push } from 'connected-react-router';
 
 export const getTrips = () => async (dispatch) => {
 	await axios.get(
@@ -10,11 +12,18 @@ export const getTrips = () => async (dispatch) => {
 
 export const getTripById = (id) => async (dispatch) => {
 	await axios.get(
-        `https://us-central1-missao-newton.cloudfunctions.net/futureX/davi/trip/${id}`
+		`https://us-central1-missao-newton.cloudfunctions.net/futureX/davi/trip/${id}`,
+		{
+			headers: {
+				auth: window.localStorage.getItem('token')
+			}
+		}
     ).then((res) => {
         console.log("dados: ", res.data)
         dispatch(displayDetailedTrip(res.data))
-    })
+    }).catch((err) => {
+		console.log(err);
+	})
 };
 
 export const displayTrips = (trips) => ({
@@ -31,7 +40,6 @@ export const displayDetailedTrip = (trip) => ({
 	}
 });
 
-
 export const getApplicationData = (tripId, data) => (dispatch) => {
 	const appData = {
 		tripId,
@@ -41,7 +49,6 @@ export const getApplicationData = (tripId, data) => (dispatch) => {
 	dispatch(apllyToTrip(appData.tripId, appData.data));
 }
 
-
 export const apllyToTrip = async (tripId, data) => {
 	await axios.post(
 		`https://us-central1-missao-newton.cloudfunctions.net/futureX/davi/trips/${tripId}/apply`, 
@@ -50,5 +57,21 @@ export const apllyToTrip = async (tripId, data) => {
 		console.log("deu bom")
 	}).catch(() => {
 		console.log("deu ruim clan")
+	})
+};
+
+export const login = (email, password) => async dispatch => {
+	await axios.post(
+		"https://us-central1-missao-newton.cloudfunctions.net/futureX/davi/login",
+		{
+			email,
+			password
+		}
+	).then((res) => {
+		window.localStorage.setItem("token", res.data.token);
+		console.log(res);
+		dispatch(push(routes.trips));
+	}).catch((err) => {
+		console.log(err)
 	})
 };
