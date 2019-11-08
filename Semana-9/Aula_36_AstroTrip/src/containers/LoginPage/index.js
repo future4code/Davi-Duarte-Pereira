@@ -1,17 +1,19 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { push } from "connected-react-router";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import styled from "styled-components";
-import { routes } from "../Router";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import { login } from "../../actions/trips";
+import React, { Component } from "react"
+import { connect } from "react-redux"
+import { push } from "connected-react-router"
+import TextField from "@material-ui/core/TextField"
+import Button from "@material-ui/core/Button"
+import styled from "styled-components"
+import { routes } from "../Router"
+import Header from "../../components/Header"
+import Footer from "../../components/Footer"
+import { login } from "../../actions/trips"
+import Main from "../../components/Main"
+import { PageWrapper } from "../../components/PageWrapper"
 
 const LoginWrapper = styled.form`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   gap: 10px;
   place-content: center;
   justify-items: center;
@@ -45,29 +47,31 @@ class LoginPage extends Component {
     const { email, password } = this.state;
 
     return (
-      <div>
+      <PageWrapper>
         <Header
           OnClickToHome={this.props.goToHome} 
         />
-        <LoginWrapper>
-          <TextField
-            onChange={this.handleFieldChange}
-            name="email"
-            type="email"
-            label="E-mail"
-            value={email}
-          />
-          <TextField
-            onChange={this.handleFieldChange}
-            name="password"
-            type="password"
-            label="Password"
-            value={password}
-          />
-          <Button onClick={this.autenticateLogin}>Login</Button>
-        </LoginWrapper>
+        <Main>
+          <LoginWrapper>
+            <TextField
+              onChange={this.handleFieldChange}
+              name="email"
+              type="email"
+              label="E-mail"
+              value={email}
+            />
+            <TextField
+              onChange={this.handleFieldChange}
+              name="password"
+              type="password"
+              label="Password"
+              value={password}
+            />
+            <Button onClick={this.autenticateLogin} variant='flat' color='primary'>Login</Button>
+          </LoginWrapper>
+        </Main>
         <Footer />
-      </div>
+      </PageWrapper>
     );
   }
 }
@@ -75,7 +79,6 @@ class LoginPage extends Component {
 function mapDispatchToProps(dispatch){
   return {
     goToHome: () => dispatch(push(routes.homePage)),
-    // goToTripsList: () => dispatch(push(routes.trips))
     requestLogin: (email, password) => dispatch(login(email, password))
   }
 }

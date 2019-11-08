@@ -4,12 +4,18 @@ import MainLogo from '../../style/MainLogo.svg'
 
 const HeaderWrapper = styled.div`
     width: 100vw;
+    height: 15%;
     display: grid;
     justify-content: center;
     align-items: center;
     grid-template-columns: repeat(5, 1fr);
     padding: 30px 0;
     border-bottom: 1px solid black;
+    background: #495867;
+`
+
+const SloganP = styled.p`
+    color: white;
 `
 
 const LeftSectionDiv = styled.div`
@@ -67,7 +73,7 @@ const Header = (props) => {
     return(
         <HeaderWrapper>
             <LeftSectionDiv>
-                <p>AstroTrip - Explore the universe   </p>
+                <SloganP>AstroTrip - Explore the universe   </SloganP>
             </LeftSectionDiv>
             <CenterSectionDiv>
                 <StyledLogo src={MainLogo} alt='AstroTripsLogo' onClick={props.OnClickToHome}/>

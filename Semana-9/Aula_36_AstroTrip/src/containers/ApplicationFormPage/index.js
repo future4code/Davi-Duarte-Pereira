@@ -9,25 +9,36 @@ import Button from "@material-ui/core/Button"
 import styled from "styled-components"
 import { Countries } from "../../components/Countries"
 import { getTrips, getApplicationData } from '../../actions/trips'
+import Main from '../../components/Main'
+import { PageWrapper } from '../../components/PageWrapper'
+import FormControl from '@material-ui/core/FormControl'
+import InputLabel from '@material-ui/core/InputLabel'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
+import Background from '../../components/Background'
+import FormDiv from '../../components/FormDiv'
 
 
 // ESTILOS:
+
 const ApplicationFormWrapper = styled.form`
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px;
+    width: 100%;
 `;
-
 
 const StyledTextField = styled(TextField)`
-    width: 35%;
+    width: 75%;
+    height: 15%;
 `;
 
-const StyledSelectForTrips = styled.select`
-    width: 35%;
+const StyledFormControl = styled(FormControl)`
+    width: 75%;
+`;
+
+const StyledButton = styled(Button)`
 `
 
 
@@ -101,51 +112,62 @@ class ApplicationFormPage extends Component {
         const { trips } = this.props
 
         return(
-            <div>
-            <Header
-                OnClickToHome={this.props.goToHome} 
-            />
-            <ApplicationFormWrapper onSubmit={this.handleOnSubmit}>
-                {applicationForm.map((input) => (
-                        <StyledTextField
-                         key={input.name} 
-                         onChange={this.handleFieldChange} 
-                         name={input.name} 
-                         type={input.type} 
-                         label={input.label} 
-                         value={this.state.form[input.name] || ""}
-                         inputProps={
-                             {
-                                 required: input.required,
-                                 tittle: input.tittle,
-                                 pattern: input.pattern,
-                                 min: input.min
-                             }
-                         }
-                        />
-                )) }
-                <Countries
-                 name={"country"} 
-                 onChange={this.handleFieldChange} 
-                 value={this.state.form.country} 
+            <PageWrapper>
+                <Header
+                    OnClickToHome={this.props.goToHome} 
                 />
-                <StyledSelectForTrips 
-                 onChange={this.handleTripInput} 
-                 value={this.state.trip}
-                >
-                    {trips.map((trip) => (
-                        <option
-                         key={trip.id} 
-                         value={trip.id}
-                        >
-                         {trip.name} - {trip.planet}
-                        </option>
-                    ))}
-                </StyledSelectForTrips>
-                <Button type="submit">Submit</Button>
-            </ApplicationFormWrapper>
-            <Footer />
-            </div>
+                <Main>
+                    <Background>
+                    <FormDiv>
+                        <ApplicationFormWrapper onSubmit={this.handleOnSubmit}>
+                            
+                                {applicationForm.map((input) => (
+                                        <StyledTextField
+                                        key={input.name} 
+                                        onChange={this.handleFieldChange} 
+                                        name={input.name} 
+                                        type={input.type} 
+                                        label={input.label} 
+                                        value={this.state.form[input.name] || ""}
+                                        inputProps={
+                                            {
+                                                required: input.required,
+                                                tittle: input.tittle,
+                                                pattern: input.pattern,
+                                                min: input.min
+                                            }
+                                        }
+                                        />
+                                )) }
+                                <Countries
+                                name={"country"} 
+                                onChange={this.handleFieldChange} 
+                                value={this.state.form.country} 
+                                />
+                                <StyledFormControl>
+                                    <InputLabel htmlFor="trips">Select the trip</InputLabel>
+                                    <Select 
+                                    onChange={this.handleTripInput} 
+                                    value={this.state.trip}
+                                    inputProps={{id: "trips"}}
+                                    >
+                                        {trips.map((trip) => (
+                                            <MenuItem
+                                            key={trip.id} 
+                                            value={trip.id}
+                                            >
+                                            {trip.name} - {trip.planet}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </StyledFormControl>
+                                <StyledButton type="submit">Submit</StyledButton>
+                        </ApplicationFormWrapper>
+                    </FormDiv>
+                    </Background>
+                </Main>
+                <Footer />
+            </PageWrapper>
         )
     }
 }

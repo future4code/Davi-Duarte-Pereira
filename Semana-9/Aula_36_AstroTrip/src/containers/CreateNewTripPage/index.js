@@ -7,8 +7,13 @@ import Footer from '../../components/Footer'
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 import styled from "styled-components"
-import { getTrips, getApplicationData, createNewTrip } from '../../actions/trips'
+import { createNewTrip } from '../../actions/trips'
 import { Planets } from '../../components/Planets'
+import Main from '../../components/Main'
+import { PageWrapper } from '../../components/PageWrapper'
+import FormControl from '@material-ui/core/FormControl'
+import Background from '../../components/Background'
+import FormDiv from '../../components/FormDiv'
 
 
 // ESTILOS:
@@ -18,18 +23,21 @@ const ApplicationFormWrapper = styled.form`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px;
 `;
-
 
 const StyledTextField = styled(TextField)`
-    width: 35%;
+    width: 75%;
+    height: 15%;
 `;
 
-const StyledSelectForTrips = styled.select`
-    width: 35%;
-`
-// 
+const StyledTextFieldWithDate = styled(TextField)`
+    width: 100%;
+    height: 15%;
+`;
+
+const StyledFormControl = styled(FormControl)`
+    width: 75%;
+`;
 
 // OBJETO PARA O FORM:
 const applicationForm = [
@@ -41,14 +49,6 @@ const applicationForm = [
         pattern: "^[a-zA-Z\s\\.,-]{5,}",
         tittle: "The name of the trip should have at least 5 characters.",
     },
-    // {
-    //     name: "date",
-    //     type: "date",
-    //     label: "When is it going to be?",
-    //     required: true,
-    //     pattern: "/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/",
-    //     tittle: "Your application text should have at least 30 characters.",
-    // },
     {
         name: "durationInDays",
         type: "number",
@@ -83,7 +83,7 @@ class CreateNewTripPage extends Component {
             window.alert("You are not authorized to enter this page. Please, login first.");
             this.props.goToHome();
         }
-    }
+    };
 
     handleFieldChange = event => {
         const { name, value } = event.target;
@@ -103,50 +103,59 @@ class CreateNewTripPage extends Component {
 
     render() {
 
-        const { trips } = this.props
-
         return(
-            <div>
-            <Header
-                OnClickToHome={this.props.goToHome}
-                backToTripsListButton onClickToTripsList={this.props.goBackToTripsList} 
-            />
-            <ApplicationFormWrapper onSubmit={this.handleOnSubmit}>
-                {applicationForm.map((input) => (
-                        <StyledTextField
-                         key={input.name} 
-                         onChange={this.handleFieldChange} 
-                         name={input.name} 
-                         type={input.type} 
-                         label={input.label} 
-                         value={this.state.form[input.name] || ""}
-                         inputProps={
-                             {
-                                 required: input.required,
-                                 tittle: input.tittle,
-                                 pattern: input.pattern,
-                                 min: input.min
-                             }
-                         }
-                        />
-                )) }
-                <StyledTextField
-                 type="date" 
-                 name="date"
-                 helperText="When is it going to be?" 
-                 inputProps={{ min: new Date().getFullYear() + '-' + (Number(new Date().getMonth()) + 1) + '-' + Number(new Date().getDate()) }} 
-                 onChange={this.handleFieldChange}
-                 value={this.state.form.date}
+            <PageWrapper>
+                <Header
+                    OnClickToHome={this.props.goToHome}
+                    backToTripsListButton onClickToTripsList={this.props.goBackToTripsList} 
                 />
-                <Planets
-                 name={"planet"} 
-                 onChange={this.handleFieldChange} 
-                 value={this.state.form.planet} 
-                />
-                <Button type="submit">Submit</Button>
-            </ApplicationFormWrapper>
-            <Footer />
-            </div>
+                <Main>
+                    <Background>
+                    <FormDiv>
+                        <ApplicationFormWrapper onSubmit={this.handleOnSubmit}>
+                            {applicationForm.map((input) => (
+                                    <StyledTextField
+                                    key={input.name} 
+                                    onChange={this.handleFieldChange} 
+                                    name={input.name} 
+                                    type={input.type} 
+                                    label={input.label} 
+                                    value={this.state.form[input.name] || ""}
+                                    inputProps={
+                                        {
+                                            required: input.required,
+                                            tittle: input.tittle,
+                                            pattern: input.pattern,
+                                            min: input.min
+                                        }
+                                    }
+                                    />
+                            )) }
+                            <StyledFormControl>
+                                {/* <InputLabel htmlFor="dateSelect">When is it going to be?</InputLabel> */}
+                                <StyledTextFieldWithDate
+                                type="date" 
+                                name="date"
+                                helperText="When is it going to be?" 
+                                inputProps={{ min: new Date().getFullYear() + '/' + (Number(new Date().getMonth()) + 1) + '/' + Number(new Date().getDate()), id: "datesSelect"}} 
+                                onChange={this.handleFieldChange}
+                                value={this.state.form.date}
+                                //     pattern: "/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/",
+                                //     tittle: "Your application text should have at least 30 characters.",
+                                />
+                            </StyledFormControl>
+                            <Planets
+                            name={"planet"} 
+                            onChange={this.handleFieldChange} 
+                            value={this.state.form.planet} 
+                            />
+                            <Button type="submit">Submit</Button>
+                        </ApplicationFormWrapper>
+                    </FormDiv>
+                    </Background>
+                </Main>
+                <Footer />
+            </PageWrapper>
         )
     }
 }

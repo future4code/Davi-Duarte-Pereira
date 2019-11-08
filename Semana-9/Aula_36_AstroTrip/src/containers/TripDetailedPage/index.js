@@ -4,6 +4,8 @@ import { push } from "connected-react-router"
 import { routes } from '../Router'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import Main from '../../components/Main'
+import { PageWrapper } from '../../components/PageWrapper'
 
 class TripDetailedPage  extends Component{
 
@@ -20,30 +22,32 @@ class TripDetailedPage  extends Component{
     const {trip, tripCandidates} = this.props
 
         return (
-            <div>
+            <PageWrapper>
                 <Header
                     OnClickToHome={this.props.goToHome}
                     admInfo admName={"AstroDev"}
                     backToTripsListButton onClickToTripsList={this.props.goBackToTripsList} 
                 />
-                <div>
-                    <p>Name: {trip.name}</p>
-                    <p>Description: {trip.description}</p>
-                    <p>Planet: {trip.planet}</p>
-                    <p>Duartion of the trip in days: {trip.durationInDays}</p>
-                    <p>Date: {trip.date}</p>
-                    <h3>Candidates: </h3>
-                    {tripCandidates.map((candidate) => (
-                        <div>
-                            <h2>{candidate.name}</h2>
-                            <p>Country: {candidate.country}</p>
-                            <p>Application text: {candidate.applicationText}</p>
-                            <p>{candidate.name} work as a {candidate.profession} and his age is {candidate.age}</p>
-                        </div>
-                    ))}
-                </div>
+                <Main>
+                    <div>
+                        <p>Name: {trip.name}</p>
+                        <p>Description: {trip.description}</p>
+                        <p>Planet: {trip.planet}</p>
+                        <p>Duartion of the trip in days: {trip.durationInDays}</p>
+                        <p>Date: {trip.date}</p>
+                        <h3>Candidates: </h3>
+                        {tripCandidates.map((candidate) => (
+                            <div>
+                                <h2>{candidate.name}</h2>
+                                <p>Country: {candidate.country}</p>
+                                <p>Application text: {candidate.applicationText}</p>
+                                <p>{candidate.name} work as a {candidate.profession} and his age is {candidate.age}</p>
+                            </div>
+                        ))}
+                    </div>
+                </Main>
                 <Footer />
-            </div>
+            </PageWrapper>
         )
     }
 }

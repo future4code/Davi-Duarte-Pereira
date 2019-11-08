@@ -1,14 +1,25 @@
 {
   "files": {
-    "main.js": "/static/js/main.a97b8ea8.chunk.js",
-    "main.js.map": "/static/js/main.a97b8ea8.chunk.js.map",
+    "main.js": "/static/js/main.f0e3f8c6.chunk.js",
+    "main.js.map": "/static/js/main.f0e3f8c6.chunk.js.map",
     "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
     "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/js/2.e029a8d6.chunk.js": "/static/js/2.e029a8d6.chunk.js",
-    "static/js/2.e029a8d6.chunk.js.map": "/static/js/2.e029a8d6.chunk.js.map",
+    "static/js/2.282d5ba1.chunk.js": "/static/js/2.282d5ba1.chunk.js",
+    "static/js/2.282d5ba1.chunk.js.map": "/static/js/2.282d5ba1.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.c832a0b9f7299de0ae73695b2c5af939.js": "/precache-manifest.c832a0b9f7299de0ae73695b2c5af939.js",
+    "precache-manifest.3bfedf0e2936d8480d8b7e5ccd3741cd.js": "/precache-manifest.3bfedf0e2936d8480d8b7e5ccd3741cd.js",
     "service-worker.js": "/service-worker.js",
-    "static/media/MainLogo.svg": "/static/media/MainLogo.78e8e865.svg"
+    "static/media/MainLogo.svg": "/static/media/MainLogo.78e8e865.svg",
+    "static/media/jupiter.svg": "/static/media/jupiter.e793dff6.svg",
+    "static/media/mars.svg": "/static/media/mars.d2aef100.svg",
+    "static/media/mercury.svg": "/static/media/mercury.d65b5dc8.svg",
+    "static/media/neptune.svg": "/static/media/neptune.8cfa5f77.svg",
+    "static/media/planet1.svg": "/static/media/planet1.0e9386cb.svg",
+    "static/media/planet2.svg": "/static/media/planet2.e6cd19e2.svg",
+    "static/media/planet3.svg": "/static/media/planet3.2c5853cb.svg",
+    "static/media/pluto.svg": "/static/media/pluto.d1a3e5c2.svg",
+    "static/media/saturn.svg": "/static/media/saturn.873d9d73.svg",
+    "static/media/uranus.svg": "/static/media/uranus.4678d213.svg",
+    "static/media/venus.svg": "/static/media/venus.6aed8135.svg"
   }
 }
