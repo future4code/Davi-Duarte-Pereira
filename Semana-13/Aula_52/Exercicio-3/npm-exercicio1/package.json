@@ -1,0 +1,16 @@
+{
+  "name": "npm-exercicio1",
+  "version": "1.0.0",
+  "description": "\"Simple Math Operations Program - SMOP\"",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "math",
+    "operations",
+    "arithmetic"
+  ],
+  "author": "Davi",
+  "license": "ISC"
+}

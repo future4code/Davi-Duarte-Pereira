@@ -1,0 +1,11 @@
+{
+  "name": "npm-exercicio2",
+  "version": "1.0.0",
+  "description": "\"Task list manager.\"",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Davi",
+  "license": "ISC"
+}
