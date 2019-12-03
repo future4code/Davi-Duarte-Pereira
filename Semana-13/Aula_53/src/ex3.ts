@@ -1,6 +1,5 @@
 
 const timeTracker = (year: number, period?: string): string => {
-    // period ? period : "AD";
     if (period === "AD"){
         if (year >= 0 && year <= 475) {
             return "Ancient Age";
@@ -22,10 +21,3 @@ const timeTracker = (year: number, period?: string): string => {
 
 
 console.log(timeTracker(50000, "BC"));
-
-
-// 100.000 BC  till 3999 BC = Pre-history
-// 4000 BC till 475 AD = Ancient Age
-// 476 AD till 1452 AD = Middle Age
-// 1453 AD till 1788 AD  = Modern Age
-// 1789 AD till now  = Contemporary age
