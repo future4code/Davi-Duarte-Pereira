@@ -1,0 +1,42 @@
+USE exercicios;
+
+DESCRIBE correntistas;
+
+ --  Exercicio 1 --
+SELECT primeiro_nome, pais, conta_corrente
+FROM correntistas
+WHERE pais="Brazil" AND conta_corrente > 3000
+ORDER BY conta_corrente ASC
+LIMIT 100;
+
+-- Exercicio 2 --
+SELECT primeiro_nome, genero, aniversario
+FROM correntistas
+WHERE genero = "F" AND aniversario < "1987-01-01";
+
+-- Exercicio 3 --
+SELECT SUM(conta_corrente) AS "Soma de todas as contas correntes"
+FROM correntistas
+WHERE pais = "Peru" AND aniversario < "1994-01-01";
+
+-- Exercicio 4 --
+SELECT pais, COUNT(genero) AS "Quantidade de homens"
+FROM correntistas
+WHERE genero = "M"
+GROUP BY pais;
+
+SELECT pais, COUNT(genero) AS "Quantidade de mulheres"
+FROM correntistas
+WHERE genero = "F"
+GROUP BY pais;
+
+-- Exercicio 5 --
+SELECT aniversario, COUNT(aniversario) AS Quantidade
+FROM correntistas
+GROUP BY aniversario
+ORDER BY Quantidade DESC;
+
+-- Exercicio 6 --
+SELECT pais, AVG((DATEDIFF('2019-12-31',aniversario) / 365, 0)) AS DIFERENCA
+FROM correntistas
+GROUP BY pais;
