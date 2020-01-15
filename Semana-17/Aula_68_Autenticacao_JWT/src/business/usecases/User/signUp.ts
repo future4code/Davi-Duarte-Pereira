@@ -1,0 +1,41 @@
+import { IdGenerator } from './../../../services/IdGenerator';
+import { UserGateway } from './../../gateways/User/user';
+import { User } from '../../entities/user';
+
+
+
+export class SignUpUseCase {
+
+  constructor(
+    private userGateway: UserGateway,
+    private idGenerator: IdGenerator
+  ){}
+
+  async execute(input: SignUpUseCaseInput){
+
+    this.validatePassword(input.password);
+
+    const newUser = new User(input.name, input.email, input.password, this.idGenerator.generate());
+
+    await this.userGateway.saveUser(newUser);
+
+    return {
+      message: 'User created successfuly'
+    }
+  }
+
+
+  private validatePassword(password: string) {
+    if (password.length <= 6) {
+      throw new Error(`Your password should have at least 7 characters.`);
+    }
+  }
+}
+
+
+export interface SignUpUseCaseInput {
+  name: string
+  email: string
+  password: string
+  id?: string
+}
