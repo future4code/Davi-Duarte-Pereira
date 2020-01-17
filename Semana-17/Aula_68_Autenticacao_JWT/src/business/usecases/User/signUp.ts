@@ -1,29 +1,34 @@
+import { HashGenerator } from './../../../services/hashGenerator';
 import { IdGenerator } from './../../../services/IdGenerator';
 import { UserGateway } from './../../gateways/User/user';
 import { User } from '../../entities/user';
-
-
+import { AuthGenerator } from '../../../services/authgenerator';
 
 export class SignUpUseCase {
-
   constructor(
     private userGateway: UserGateway,
-    private idGenerator: IdGenerator
+    private idGenerator: IdGenerator,
+    private authGenerator: AuthGenerator,
+    private hashGenerator: HashGenerator
   ){}
 
-  async execute(input: SignUpUseCaseInput){
+  async execute(input: SignUpUseCaseInput) {
 
     this.validatePassword(input.password);
 
-    const newUser = new User(input.name, input.email, input.password, this.idGenerator.generate());
+    const newUser = new User( 
+      input.name, 
+      input.email, 
+      await this.hashGenerator.generate(input.password), 
+      this.idGenerator.generate()
+    );
 
     await this.userGateway.saveUser(newUser);
 
     return {
-      message: 'User created successfuly'
+      auth: this.authGenerator.generate(newUser.getId())
     }
   }
-
 
   private validatePassword(password: string) {
     if (password.length <= 6) {
@@ -31,7 +36,6 @@ export class SignUpUseCase {
     }
   }
 }
-
 
 export interface SignUpUseCaseInput {
   name: string
