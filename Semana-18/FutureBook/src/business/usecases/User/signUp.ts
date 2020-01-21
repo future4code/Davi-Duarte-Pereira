@@ -23,7 +23,7 @@ export class SignUpUseCase {
       this.idGenerator.generate()
     );
 
-    await this.userGateway.saveUser(newUser);
+    await this.userGateway.createNewUser(newUser);
 
     return {
       auth: this.authGenerator.generate(newUser.getId())

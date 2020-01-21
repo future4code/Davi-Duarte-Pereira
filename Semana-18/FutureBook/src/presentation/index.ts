@@ -1,3 +1,4 @@
+import { SignInUseCase } from './../business/usecases/User/signIn';
 import { SignUpUseCase, SignUpUseCaseInput } from './../business/usecases/User/signUp';
 import express, {Request, Response} from 'express'
 import { UserDatabase } from '../data/userDatabase';
@@ -33,6 +34,26 @@ app.post('/signup', async (req: Request, res: Response) => {
     })
   }
 
+})
+
+app.post('/signin', async (req: Request, res: Response) => {
+
+  try {
+    const useCase = new SignInUseCase(
+      new UserDatabase(),
+      new JWTauthGenerator(),
+      new BCryptHashGenerator()
+    )
+
+    const result = await useCase.execute(req.body.email, req.body.password);
+    res.status(200).send(result);
+
+  } catch (err) {
+    res.status(400).send({
+      ...err,
+      errorMessage: err.message
+    })
+  }
 })
 
 export default app
