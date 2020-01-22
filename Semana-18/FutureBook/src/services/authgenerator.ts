@@ -24,7 +24,6 @@ export class JWTauthGenerator implements AuthGenerator {
     return verifiedResult.userId;
   }
 
-
   private getJwtSecretKey(): string {
     if (!process.env[JWTauthGenerator.SECRET_KEY]) {
       throw new Error(

@@ -1,3 +1,4 @@
+import { CreateNewPostUseCase, CreateNewPostUCInput } from './../business/usecases/Post/createNewPost';
 import { SignInUseCase } from './../business/usecases/User/signIn';
 import { SignUpUseCase, SignUpUseCaseInput } from './../business/usecases/User/signUp';
 import express, {Request, Response} from 'express'
@@ -5,6 +6,11 @@ import { UserDatabase } from '../data/userDatabase';
 import { BCryptHashGenerator } from '../services/hashGenerator';
 import { V4IdGenerator } from '../services/IdGenerator';
 import { JWTauthGenerator } from '../services/authgenerator';
+import { PostDatabase } from '../data/postDatabase';
+
+const getTokenFromHeaders = (headers: any): string => {
+  return (headers["auth"] as string) || "";
+};
 
 const app = express()
 app.use(express.json()) // Linha mágica (middleware)
@@ -46,6 +52,36 @@ app.post('/signin', async (req: Request, res: Response) => {
     )
 
     const result = await useCase.execute(req.body.email, req.body.password);
+    res.status(200).send(result);
+
+  } catch (err) {
+    res.status(400).send({
+      ...err,
+      errorMessage: err.message
+    })
+  }
+})
+
+app.post('/createNewPost', async (req: Request, res: Response) => {
+
+  try {
+    const useCase = new CreateNewPostUseCase(
+      new V4IdGenerator(),
+      new PostDatabase(),
+      new JWTauthGenerator()
+    )
+
+    const input: CreateNewPostUCInput = {
+      photo: req.body.photo,
+      description: req.body.description,
+      postType: req.body.type,
+      authToken: getTokenFromHeaders(req.headers)
+    }
+
+    const result = await useCase.execute(input);
+
+    console.log
+
     res.status(200).send(result);
 
   } catch (err) {

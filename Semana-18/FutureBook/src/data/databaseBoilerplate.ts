@@ -10,5 +10,7 @@ export abstract class DatabaseBoilerplate {
       database: 'davi'
     }
   });
+
+  protected getSQLDateFromTSDate = (date: Date): string => date.toISOString().split('T')[0];
 }
 
