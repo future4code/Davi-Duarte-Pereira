@@ -10,3 +10,5 @@ const server = app.listen(process.env.PORT || 3000, () => {
     console.error(`Failure upon starting server.`)
   }
 })
+
+// TODO: create a feed

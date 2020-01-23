@@ -18,7 +18,7 @@ export class FollowUserUseCase {
     await this.userGateway.followUser(followerId, followedId);
 
     return {
-      message: "user followed successfuly."
+      message: "User followed successfuly."
     }
   }
 }

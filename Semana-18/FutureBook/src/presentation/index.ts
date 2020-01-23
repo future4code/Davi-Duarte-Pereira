@@ -8,6 +8,7 @@ import { V4IdGenerator } from '../services/IdGenerator';
 import { JWTauthGenerator } from '../services/authgenerator';
 import { PostDatabase } from '../data/postDatabase';
 import { FollowUserUseCase } from '../business/usecases/User/follow';
+import { UnfollowUserUseCase } from '../business/usecases/User/unfollow';
 
 const getTokenFromHeaders = (headers: any): string => {
   return (headers["auth"] as string) || "";
@@ -100,6 +101,25 @@ app.post('/follow/:id', async (req: Request, res: Response) => {
       new JWTauthGenerator()
     )
     
+    const result = await useCase.execute(getTokenFromHeaders(req.headers), req.params.id)
+
+    res.status(200).send(result)
+    
+  } catch (err) {
+    res.status(400).send({
+      ...err,
+      errorMessage: err.message
+    })
+  }
+})
+
+app.post('/unfollow/:id', async (req: Request, res: Response) => {
+  try {
+    const useCase = new UnfollowUserUseCase(
+      new UserDatabase(),
+      new JWTauthGenerator()
+    )
+
     const result = await useCase.execute(getTokenFromHeaders(req.headers), req.params.id)
 
     res.status(200).send(result)

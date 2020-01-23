@@ -5,5 +5,6 @@ export interface UserGateway {
   getUserByEmail(email: string): Promise<User>
   verifyIfUserExists(id: string): Promise<boolean>
   followUser(followerId: string, followedId: string): Promise<void>
+  unfollowUser(followerId: string, userToUnfollowId: string): Promise<void>
 }
 

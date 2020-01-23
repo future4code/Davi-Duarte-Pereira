@@ -64,5 +64,22 @@ export class UserDatabase extends DatabaseBoilerplate implements UserGateway {
       throw new Error(e)
     }
   }
+
+  public async unfollowUser(followerId: string, userToUnfollowId: string): Promise<void> {
+    try {
+      await this.connection.raw(
+        `
+          DELETE FROM ${UserDatabase.USERS_RELATIONS_TABLE}
+          WHERE (follower_id = '${followerId}') and (followed_id = '${userToUnfollowId}');
+        `
+      )
+    } catch (e) {
+      throw new Error(e)
+    }
+  }
+
+  
+
+
 }
 
