@@ -9,6 +9,13 @@ import { JWTauthGenerator } from '../services/authgenerator';
 import { PostDatabase } from '../data/postDatabase';
 import { FollowUserUseCase } from '../business/usecases/User/follow';
 import { UnfollowUserUseCase } from '../business/usecases/User/unfollow';
+import { GetFeedUseCase } from '../business/usecases/Feed/getFeed';
+import { FeedDatabase } from '../data/feedDatabase';
+
+const authenticate = (req: Request) => {
+  const authService = new JWTauthGenerator()
+  return authService.getUserIdFromToken(getTokenFromHeaders(req.headers))
+}
 
 const getTokenFromHeaders = (headers: any): string => {
   return (headers["auth"] as string) || "";
@@ -124,6 +131,24 @@ app.post('/unfollow/:id', async (req: Request, res: Response) => {
 
     res.status(200).send(result)
     
+  } catch (err) {
+    res.status(400).send({
+      ...err,
+      errorMessage: err.message
+    })
+  }
+})
+
+app.get('/feed', async (req: Request, res: Response) => {
+  try {
+    const userId = authenticate(req)
+
+    const useCase = new GetFeedUseCase(new FeedDatabase())
+
+    const result = await useCase.execute(userId)
+
+    res.status(200).send(result)
+
   } catch (err) {
     res.status(400).send({
       ...err,

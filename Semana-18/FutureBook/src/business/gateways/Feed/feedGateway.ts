@@ -3,7 +3,7 @@ import { Post } from "../../entities/post";
 
 export interface FeedResponse {
   post: Post
-  user: string
+  userName: string
 }
 
 export interface FeedGateway {
