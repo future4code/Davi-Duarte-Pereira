@@ -1,3 +1,5 @@
+import { GetPaginatedFeedUseCase } from './../business/usecases/Feed/getPaginatedFeed';
+import { FeedGatewayInput } from './../business/gateways/Feed/feedGateway';
 import { CreateNewPostUseCase, CreateNewPostUCInput } from './../business/usecases/Post/createNewPost';
 import { SignInUseCase } from './../business/usecases/User/signIn';
 import { SignUpUseCase, SignUpUseCaseInput } from './../business/usecases/User/signUp';
@@ -11,6 +13,7 @@ import { FollowUserUseCase } from '../business/usecases/User/follow';
 import { UnfollowUserUseCase } from '../business/usecases/User/unfollow';
 import { GetFeedUseCase } from '../business/usecases/Feed/getFeed';
 import { FeedDatabase } from '../data/feedDatabase';
+import { GetPaginatedFeedUseCaseInput } from '../business/usecases/Feed/getPaginatedFeed';
 
 const authenticate = (req: Request) => {
   const authService = new JWTauthGenerator()
@@ -140,7 +143,7 @@ app.post('/unfollow/:id', async (req: Request, res: Response) => {
 })
 
 app.get('/feed', async (req: Request, res: Response) => {
-  try {
+  try { 
     const userId = authenticate(req)
 
     const useCase = new GetFeedUseCase(new FeedDatabase())
@@ -149,6 +152,30 @@ app.get('/feed', async (req: Request, res: Response) => {
 
     res.status(200).send(result)
 
+  } catch (err) {
+    res.status(400).send({
+      ...err,
+      errorMessage: err.message
+    })
+  }
+})
+
+app.post('/feed', async (req: Request, res: Response) => {
+  try {
+    const userId = authenticate(req)
+
+    const input: GetPaginatedFeedUseCaseInput = {
+      userId, 
+      type: req.body.type, 
+      page: req.body.page, 
+      ordenation: req.body.ordenation
+    }
+
+    const useCase = new GetPaginatedFeedUseCase(new FeedDatabase())
+
+    const result = await useCase.execute(input)
+
+    res.status(200).send(result)
   } catch (err) {
     res.status(400).send({
       ...err,

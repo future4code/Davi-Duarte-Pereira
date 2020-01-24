@@ -6,7 +6,7 @@ export class GetFeedUseCase {
     private feedGateway: FeedGateway
   ){}
 
-  async execute(userId: string): Promise<GetFeedOutput> {
+  async execute(userId: string): Promise<GetFeedOutput> {    
     const responses = await this.feedGateway.getFeed(userId)
     return {
       posts: responses.map((response) => ({
