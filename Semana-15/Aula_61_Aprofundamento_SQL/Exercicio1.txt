@@ -1,0 +1,29 @@
+DESCRIBE funcionarios;
+
+-- Exercicio 1 --
+SELECT nome, salario
+FROM funcionarios
+ORDER BY salario DESC
+LIMIT 5;
+
+-- Exercicio 2 --
+SELECT local_de_trabalho, AVG(salario) AS "Media salarial"
+FROM funcionarios
+GROUP BY local_de_trabalho;
+
+-- Execricio 3 --
+SELECT local_de_trabalho, COUNT(genero) as "Homens por local de trabalho"
+FROM funcionarios
+WHERE genero = "M"
+GROUP BY local_de_trabalho;
+
+SELECT local_de_trabalho, COUNT(genero) as "Mulheres por local de trabalho"
+FROM funcionarios
+WHERE genero = "F"
+GROUP BY local_de_trabalho;
+
+-- Exercicio 4 -- 
+SELECT nome, data_contratacao
+FROM funcionarios
+ORDER BY data_contratacao ASC
+LIMIT 10;
