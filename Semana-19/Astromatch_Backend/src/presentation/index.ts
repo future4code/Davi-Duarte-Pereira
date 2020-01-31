@@ -12,7 +12,7 @@ import { MatchUseCase } from '../business/usecases/matches/match'
 import { GetAllMatchesUseCase } from '../business/usecases/matches/getAllMatches';
 
 
-const getTokenFromHeaders = (headers: any): string => {
+export const getTokenFromHeaders = (headers: any): string => {
   return (headers["auth"] as string) || "";
 };
 
@@ -24,7 +24,8 @@ const authenticate = (req: Request) => {
 const app = express()
 app.use(express.json()) // Linha mágica (middleware)
 
-app.post('/signup', async (req: Request, res: Response) => {
+// signupEndpoint
+app.post('/:route', async (req: Request, res: Response) => {
 
   try { 
     const input: SignUpUseCaseInput =  {
@@ -62,7 +63,8 @@ app.post('/signup', async (req: Request, res: Response) => {
 
 })
 
-app.post('/signin', async (req: Request, res: Response) => {
+// signinEndpoint
+app.post('/:route', async (req: Request, res: Response) => {
 
   try {
     const useCase = new SignInUseCase(
@@ -82,7 +84,8 @@ app.post('/signin', async (req: Request, res: Response) => {
   }
 })
 
-app.get('/profiles', async (req: Request, res: Response) => {
+// getProfilesEndpoint
+app.get('/:route', async (req: Request, res: Response) => {
   try {
     const token = getTokenFromHeaders(req.headers)
 
@@ -103,7 +106,8 @@ app.get('/profiles', async (req: Request, res: Response) => {
   }
 })
 
-app.get('/matches', async (req: Request, res: Response) => {
+// getMatchesEndpoint
+app.get('/:route', async (req: Request, res: Response) => {
   try {
     const token = getTokenFromHeaders(req.headers)
 
@@ -124,7 +128,8 @@ app.get('/matches', async (req: Request, res: Response) => {
   }
 })
 
-app.post('/match/:id', async (req: Request, res: Response) => {
+// matchEndpoint
+app.post('/:route/:id', async (req: Request, res: Response) => {
   try {
     const useCase = new MatchUseCase(
       new UserDatabase(),
@@ -143,7 +148,8 @@ app.post('/match/:id', async (req: Request, res: Response) => {
   }
 })
 
-app.post('/unmatch/:id', async (req: Request, res: Response) => {
+// unmatchEndpoint
+app.post('/:route/:id', async (req: Request, res: Response) => {
   try {
     const useCase = new UnmatchUseCase(
       new UserDatabase(),
@@ -161,7 +167,6 @@ app.post('/unmatch/:id', async (req: Request, res: Response) => {
     })
   }
 })
-
 
 
 export default app
