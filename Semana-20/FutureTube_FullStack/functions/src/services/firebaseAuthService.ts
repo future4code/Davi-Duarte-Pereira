@@ -1,14 +1,13 @@
-import { AuthServiceGateway } from './../business/gateways/authServiceGateway';
-import * as firebase from 'firebase-admin'
+import * as admin from 'firebase-admin'
 
-export class FirebaseAuthService implements AuthServiceGateway {
+export class FirebaseAuthService {
   async signUp(email: string, password: string): Promise<any> {
     try {
-      const credential = await firebase.auth().createUser({email, password})
-
+      const credential = await admin.auth().createUser({email, password})
       return credential.uid
     } catch (e) {
-      throw new Error (e)
+      throw new Error(e)
     }
   }
+
 }
