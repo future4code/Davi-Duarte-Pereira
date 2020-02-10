@@ -1,9 +1,9 @@
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
-import express, {Request, Response}  from 'express'
 import cors from 'cors'
-import { SignUpUseCaseInput, SignUpUseCase } from './business/usecases/signUp'
+import express, {Request, Response}  from 'express'
 import { UserDatabase } from './data/userDatabase'
+import { SignUpUseCaseInput, SignUpUseCase } from './business/usecases/signUp'
 
 const app = express()
 app.use(cors())
@@ -32,8 +32,6 @@ app.post('/signup', async (req: Request, res: Response) => {
     }
   }
 })
-
-export default app
 
 admin.initializeApp()
 
