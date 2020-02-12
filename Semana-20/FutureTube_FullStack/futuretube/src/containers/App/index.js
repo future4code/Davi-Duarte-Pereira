@@ -16,14 +16,6 @@ import theme from "../../style/theme"
 import Router from "../Router"
 import { generateReducers } from "../../reducers"
 
-// TODO: resolve JssProvider component
-
-// const generateClassName = createGenerateClassName()
-// const jss = create({
-//   ...jssPreset(),
-//   insertionPoint: document.getElementById("jss-insertion-point")
-// })
-
 export const history = createBrowserHistory()
 
 const middlewares = [
@@ -35,17 +27,22 @@ const middlewares = [
 
 const store = createStore(generateReducers(history), compose(...middlewares))
 
-function App(){
-  return (
-    <Provider store={store}>
-      {/* <JssProvider jss={jss} generateClassName={generateClassName}> */}
-        <MuiThemeProvider theme={theme}>
-          <CssBaseline />
-          <Router history={history} />
-        </MuiThemeProvider>
-      {/* </JssProvider> */}
-    </Provider>
-  );
+class App extends React.Component {
+  render(){
+    
+    return (
+      <Provider store={store}>
+        {/* <JssProvider jss={jss} generateClassName={generateClassName}> */}
+          <MuiThemeProvider theme={theme}>
+            <CssBaseline />
+            <Router history={history} />
+          </MuiThemeProvider>
+        {/* </JssProvider> */}
+      </Provider>
+    );
+  }
 }
+
+
 
 export default App;
