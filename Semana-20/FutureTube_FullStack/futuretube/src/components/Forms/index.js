@@ -1,34 +1,81 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
   StyledFormControl, 
   StyledCard, 
   StyledTextField, 
-  StyledButton, 
+  StyledGoogleButton, 
   GoogleIcon, 
-  StyledSignUpPrompt,
-  StyledLink
+  StyledMessagePrompt,
+  StyledLink,
+  StyledNormalButton
 } from './styled'
 import googleLogo from '../../style/googlelogo.svg'
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers'
+import MomentUtils from '@date-io/moment'
 
 
 export function FormGenerator(props) {
-  // TODO: Realizar a adaptacao para outros forms alem do signin.
+  const [selectedDate, handleDateChange] = useState(new Date());
 
-  const signupComponent = props.onClickToSignUp ? 
-    <StyledSignUpPrompt> 
-      Not a user yet? <StyledLink onClick={props.onClickToSignUp}>Sign up</StyledLink> then.
-    </StyledSignUpPrompt>
-    : null 
-
-
-  if (props.onSubmitGoogleLogin) {
-
-  }
+  const signupComponent = props.onClickToSignUp 
+    ? 
+  <StyledMessagePrompt> 
+    Not a user yet? <StyledLink onClick={props.onClickToSignUp}>Sign up</StyledLink> then.
+  </StyledMessagePrompt>
+    : 
+  null
   
+  const changePasswordComponent = props.onClickToChangePassword 
+    ?
+  <StyledMessagePrompt><StyledLink onClick={props.onClickToChangePassword}> Change password </StyledLink></StyledMessagePrompt>
+    :
+  null
+
+  const googleButtonComponent = props.onClickGoogleButton
+    ?
+  <StyledGoogleButton 
+    variant="contained" 
+    color="primary" 
+    onClick={props.onClickGoogleButton}
+    endIcon={<GoogleIcon src={googleLogo} />}
+  > {props.googleButtonLabel} </StyledGoogleButton>
+    :
+  null
+
+  const normalButtonComponent = props.onClickNormalButton
+    ?
+  <StyledNormalButton 
+    variant="contained" 
+    color="primary" 
+    onClick={props.onClickNormalButton}
+  > {props.normalButtonLabel} </StyledNormalButton>
+    :
+  null
+
+  // const dateInputComponent = props.
+
   return(
     <StyledCard>
       <StyledFormControl > 
           {props.formMapper.map((item) => {
+            // TODO: TURN SIGNUP COMPONENT INTO A HOOK
+            // if (item.name === "birthday") {
+            //   return (
+            //     <MuiPickersUtilsProvider utils={MomentUtils}>
+            //       <KeyboardDatePicker
+            //         margin="normal"
+            //         value={props.dateValue}
+            //         onChange={props.onChangeDate}
+            //         KeyboardButtonProps={{
+            //           'aria-label': 'change date',
+            //         }}
+            //       />
+            //     </MuiPickersUtilsProvider>
+            //   )
+            // }
             return (
               <StyledTextField key={item.name}
                 name={item.name} 
@@ -38,22 +85,14 @@ export function FormGenerator(props) {
                 onChange={props.onChangeMapFunc}
                 variant={item.variant}
                 label={item.placeholder}
+                onKeyDown={props.onKeyDown}
               />
             )
           })}
-        <StyledButton 
-          variant="contained" 
-          color="primary" 
-          onClick={props.onSubmitNormalLogin}
-        > Login </StyledButton>
-        <StyledButton 
-          variant="contained" 
-          color="primary" 
-          onClick={props.onSubmitGoogleLogin}
-          endIcon={<GoogleIcon src={googleLogo} />}
-        > Sign in with google </StyledButton>
+        {normalButtonComponent}
+        {googleButtonComponent}
+        {changePasswordComponent}
         {signupComponent}
-        <StyledSignUpPrompt><StyledLink> Change password </StyledLink></StyledSignUpPrompt>
       </StyledFormControl>
     </StyledCard>
   )

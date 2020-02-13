@@ -26,7 +26,7 @@ export const StyledCard = styled(Card)`
 `
 
 export const StyledTextField = styled(TextField)`
-  padding: 5%;
+  padding: 5% 0;
   &:first-child{
     margin-top: 5%;
   }
@@ -34,19 +34,23 @@ export const StyledTextField = styled(TextField)`
     margin-bottom: 5%;
   }
 `
-export const StyledButton = styled(Button)`
+export const StyledNormalButton = styled(Button)`
   margin: 2% 0;
-  &:last-of-type{
-    background: #FAFAFB;
-    color: #1f2224;
-  }
 `
+
+export const StyledGoogleButton = styled(Button)`
+  margin: 2% 0;
+  background: #FAFAFB;
+  color: #1f2224;
+  
+`
+
 export const GoogleIcon = styled.img`
   width: 1.5rem;
   height: 1.5rem;
 `
 
-export const StyledSignUpPrompt = styled.p`
+export const StyledMessagePrompt = styled.p`
   color: #a32330;
   text-align: end;
   font-family: 'Yantramanav', sans-serif;

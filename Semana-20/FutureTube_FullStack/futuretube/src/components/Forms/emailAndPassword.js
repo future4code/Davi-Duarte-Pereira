@@ -22,7 +22,7 @@ export const signupWithEmailAndPasswordForm = [
   {
     name: "name",
     type: "text",
-    variant: "outlined",
+    variant: "standard",
     required: true,
     state: "name",
     placeholder: "Name"
@@ -30,7 +30,7 @@ export const signupWithEmailAndPasswordForm = [
   {
     name: "email",
     type: "text",
-    variant: "outlined",
+    variant: "standard",
     required: true,
     state: "email",
     placeholder: "E-mail"
@@ -38,7 +38,7 @@ export const signupWithEmailAndPasswordForm = [
   {
     name: "password",
     type: "password",
-    variant: "outlined",
+    variant: "standard",
     required: true,
     state: "password",
     placeholder: "Password"
@@ -46,7 +46,7 @@ export const signupWithEmailAndPasswordForm = [
   {
     name: "birthday",
     type: "date",
-    variant: "outlined",
+    variant: "standard",
     required: true,
     state: "birthday",
     placeholder: "Birthday"
@@ -54,10 +54,10 @@ export const signupWithEmailAndPasswordForm = [
   {
     name: "photo",
     type: "file",
-    variant: "outlined",
+    variant: "standard",
     required: true,
     state: "photo",
-    placeholder: "Photo"
+    // placeholder: "Photo"
   }
 ]
 

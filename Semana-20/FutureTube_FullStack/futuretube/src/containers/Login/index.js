@@ -5,9 +5,12 @@ import { loginWithEmailAndPasswordForm } from '../../components/Forms/emailAndPa
 import { Redirect } from 'react-router-dom'
 import { FormGenerator } from '../../components/Forms'
 import { StyledFormWrapper, FutureLogo, TubeLogo } from './styled'
+import { connect } from 'react-redux'
+import { push } from 'connected-react-router'
+import { routes } from '../Router'
+import Header from '../../components/Header'
 
-
-export default class Login extends Component {
+class Login extends Component {
 
   constructor(props){
     super(props)
@@ -30,7 +33,7 @@ export default class Login extends Component {
       console.log(e.message)
     }
   }
-
+  // TODO: IMPLEMENT GOOGLE LOGIN WITH DATABASE
   submitGoogleLogin = async (e) => {
     try {
       e.preventDefault()
@@ -47,6 +50,16 @@ export default class Login extends Component {
     this.props.goToSignupPage()
   }
 
+  goToChangePasswordPage = () => {
+    this.props.goToChangePasswordPage()
+  }
+
+  signInWithEnter = (e) => {
+    if (e.key === "Enter") {
+      this.submitNormalLogin(e)
+    }
+  }
+
   render() {
     if (this.props.isLoggedIn) {
       return <Redirect to={{pathname: '/home'}} />
@@ -54,17 +67,29 @@ export default class Login extends Component {
     return (
       <PageWrapper>
         <StyledFormWrapper>
-          <FutureLogo>Future<TubeLogo>Tube</TubeLogo></FutureLogo>
-          <FormGenerator 
-            onSubmitNormalLogin={this.submitNormalLogin} 
-            onSubmitGoogleLogin={this.submitGoogleLogin}
+          <Header />
+          <FormGenerator
+            onKeyDown={this.signInWithEnter}
+            googleButtonLabel={"Sign in with google"}
+            normalButtonLabel={'Login'} 
+            onClickNormalButton={this.submitNormalLogin} 
+            onClickGoogleButton={this.submitGoogleLogin}
             formMapper={loginWithEmailAndPasswordForm}
             formMapValue={this.state[loginWithEmailAndPasswordForm.state]}
             onChangeMapFunc={this.handleInputInfo}
-            onClickToSignUp={this.goToSignupPage} 
+            onClickToSignUp={this.goToSignupPage}
+            onClickToChangePassword={this.goToChangePasswordPage} 
           />
         </StyledFormWrapper>
       </PageWrapper>
     )
   }
 }
+
+
+const mapDispatchToProps = (dispatch) => ({
+  goToSignupPage: () => dispatch(push(routes.signup)),
+  goToChangePasswordPage: () => dispatch(push(routes.changePassword))
+})
+
+export default connect(null, mapDispatchToProps)(Login)

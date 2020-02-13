@@ -2,11 +2,15 @@ import React, { Component } from 'react'
 import * as firebase from 'firebase/app'
 import { PageWrapper } from '../../components/PageWrapper'
 import { signupWithEmailAndPasswordForm } from '../../components/Forms/emailAndPassword'
-import { StyledForm } from  './styled'
+import { StyledFormWrapper } from  './styled'
 import { signup } from '../../actions/auth'
 import { connect } from 'react-redux'
+import { FormGenerator } from '../../components/Forms'
+import Header from '../../components/Header'
+import { push } from 'connected-react-router'
+import { routes } from '../Router'
 
-
+// TODO: TURN THIS INTO A HOOK
 class Signup extends Component {
   constructor(props){
     super(props)
@@ -17,10 +21,15 @@ class Signup extends Component {
       birthday: '',
       photo: ''
     }
+    
   }
 
   handleInputInfo = (e) => {
     this.setState({[e.target.name]: e.target.value})
+  }
+
+  handleDate = (e) => {
+    this.setState({birthday: e.target.value})
   }
 
   // TODO: upload photo file to cloud storage
@@ -39,25 +48,25 @@ class Signup extends Component {
     }
   }
 
+  returnToHome = () => {
+    this.props.returnToHome()
+  }
+
   render() {
     return (
       <PageWrapper>
-        <StyledForm onSubmit={this.submitNormalSignup}>
-        {signupWithEmailAndPasswordForm.map((item) => {
-          return (
-            <input key={item.name} 
-              name={item.name} 
-              type={item.type}
-              label={item.label}
-              required={item.required}
-              value={this.state[item.state]}
-              onChange={this.handleInputInfo}
-              placeholder={item.label}
-            />
-          )
-        })}
-        <input type='submit'/>
-        </StyledForm>
+        <StyledFormWrapper>
+        <Header onClickReturnToHome={this.returnToHome} />
+        <FormGenerator
+          normalButtonLabel={"Sign Up"}
+          onClickNormalButton={this.submitNormalSignup}
+          formMapper={signupWithEmailAndPasswordForm}
+          formMapValue={this.state[signupWithEmailAndPasswordForm.state]}
+          onChangeMapFunc={this.handleInputInfo}
+          // dateValue={this.state.birthday}
+          // onChangeDate={this.handleDate}
+        />
+        </StyledFormWrapper>
       </PageWrapper>
     )
   }
@@ -79,7 +88,8 @@ const mapDispatchToProps = (dispatch) => ({
     birthday, 
     photo, 
     id
-  ))
+  )),
+  returnToHome: () => dispatch(push(routes.root))
 })
 
 export default connect(null, mapDispatchToProps)(Signup)
