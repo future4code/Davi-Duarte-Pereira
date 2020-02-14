@@ -12,8 +12,6 @@ import { setLoggedInState } from '../../actions/auth'
 import { connect } from 'react-redux'
 import * as firebase from 'firebase/app'
 
-
-
 export const routes = {
   root: '/',
   signup: "/signup",

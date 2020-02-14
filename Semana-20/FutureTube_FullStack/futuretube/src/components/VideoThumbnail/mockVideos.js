@@ -1,36 +1,133 @@
+import GoogleLogo from '../../style/futuretubelogo.svg'
 
 
 export const mockVideos = [
   {
     title: "Surfing",
-    img: "https://i.picsum.photos/200/200.jpg"
+    img: GoogleLogo
   },
   {
     title: "Skating",
-    img: "https://i.picsum.photos/200/200.jpg"
+    img: GoogleLogo
   },
   {
-    title: "A walk in the park",
-    img: "https://i.picsum.photos/200/200.jpg"
+    title: "A walk in the park sajkdhjaskhdjksahdkjhaskjdhaskjdhkjashdjashdkjhsadkj",
+    img: GoogleLogo
   },
   {
     title: "Getting started with JS",
-    img: "https://i.picsum.photos/200/200.jpg"
+    img: GoogleLogo
   },
   {
     title: "Cruising down the street",
-    img: "https://i.picsum.photos/200/200.jpg"
+    img: GoogleLogo
   },
   {
     title: "Coding together #31",
-    img: "https://i.picsum.photos/200/200.jpg"
+    img: GoogleLogo
   },
   {
     title: "Minecraft adventures",
-    img: "https://i.picsum.photos/200/200.jpg"
+    img: GoogleLogo
   },
   {
     title: "Javascript === Fun!",
-    img: "https://i.picsum.photos/200/200.jpg"
+    img: GoogleLogo
+  },
+  {
+    title: "Surfing",
+    img: GoogleLogo
+  },
+  {
+    title: "Skating",
+    img: GoogleLogo
+  },
+  {
+    title: "A walk in the park",
+    img: GoogleLogo
+  },
+  {
+    title: "Getting started with JS",
+    img: GoogleLogo
+  },
+  {
+    title: "Cruising down the street",
+    img: GoogleLogo
+  },
+  {
+    title: "Coding together #31",
+    img: GoogleLogo
+  },
+  {
+    title: "Minecraft adventures",
+    img: GoogleLogo
+  },
+  {
+    title: "Javascript === Fun!",
+    img: GoogleLogo
+  },
+  {
+    title: "Surfing",
+    img: GoogleLogo
+  },
+  {
+    title: "Skating",
+    img: GoogleLogo
+  },
+  {
+    title: "A walk in the park",
+    img: GoogleLogo
+  },
+  {
+    title: "Getting started with JS",
+    img: GoogleLogo
+  },
+  {
+    title: "Cruising down the street",
+    img: GoogleLogo
+  },
+  {
+    title: "Coding together #31",
+    img: GoogleLogo
+  },
+  {
+    title: "Minecraft adventures",
+    img: GoogleLogo
+  },
+  {
+    title: "Javascript === Fun!",
+    img: GoogleLogo
+  },
+  {
+    title: "Surfing",
+    img: GoogleLogo
+  },
+  {
+    title: "Skating",
+    img: GoogleLogo
+  },
+  {
+    title: "A walk in the park",
+    img: GoogleLogo
+  },
+  {
+    title: "Getting started with JS",
+    img: GoogleLogo
+  },
+  {
+    title: "Cruising down the street",
+    img: GoogleLogo
+  },
+  {
+    title: "Coding together #31",
+    img: GoogleLogo
+  },
+  {
+    title: "Minecraft adventures",
+    img: GoogleLogo
+  },
+  {
+    title: "Javascript === Fun!",
+    img: GoogleLogo
   },
 ]

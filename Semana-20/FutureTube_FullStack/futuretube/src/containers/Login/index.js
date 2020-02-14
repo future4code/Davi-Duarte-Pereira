@@ -86,7 +86,6 @@ class Login extends Component {
   }
 }
 
-
 const mapDispatchToProps = (dispatch) => ({
   goToSignupPage: () => dispatch(push(routes.signup)),
   goToChangePasswordPage: () => dispatch(push(routes.changePassword))

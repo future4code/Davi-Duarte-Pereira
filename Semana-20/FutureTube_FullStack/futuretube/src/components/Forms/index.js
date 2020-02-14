@@ -10,15 +10,13 @@ import {
   StyledNormalButton
 } from './styled'
 import googleLogo from '../../style/googlelogo.svg'
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from '@material-ui/pickers'
-import MomentUtils from '@date-io/moment'
+import DatePicker from './datePicker'
 
 
 export function FormGenerator(props) {
-  const [selectedDate, handleDateChange] = useState(new Date());
+  // these ternary ifs are used to show a part of the component only if its prop is called.
+  // I liked doing this because it lets the component to render in very different ways and it becomes more
+  // appliable to different use cases.
 
   const signupComponent = props.onClickToSignUp 
     ? 
@@ -38,7 +36,7 @@ export function FormGenerator(props) {
     ?
   <StyledGoogleButton 
     variant="contained" 
-    color="primary" 
+    color="inherit" 
     onClick={props.onClickGoogleButton}
     endIcon={<GoogleIcon src={googleLogo} />}
   > {props.googleButtonLabel} </StyledGoogleButton>
@@ -55,27 +53,16 @@ export function FormGenerator(props) {
     :
   null
 
-  // const dateInputComponent = props.
 
   return(
     <StyledCard>
       <StyledFormControl > 
           {props.formMapper.map((item) => {
-            // TODO: TURN SIGNUP COMPONENT INTO A HOOK
-            // if (item.name === "birthday") {
-            //   return (
-            //     <MuiPickersUtilsProvider utils={MomentUtils}>
-            //       <KeyboardDatePicker
-            //         margin="normal"
-            //         value={props.dateValue}
-            //         onChange={props.onChangeDate}
-            //         KeyboardButtonProps={{
-            //           'aria-label': 'change date',
-            //         }}
-            //       />
-            //     </MuiPickersUtilsProvider>
-            //   )
-            // }
+            if (item.name === "birthdate") {
+              return (
+                <DatePicker />
+              )
+            }
             return (
               <StyledTextField key={item.name}
                 name={item.name} 
@@ -86,6 +73,7 @@ export function FormGenerator(props) {
                 variant={item.variant}
                 label={item.placeholder}
                 onKeyDown={props.onKeyDown}
+                ref={props.ref}
               />
             )
           })}

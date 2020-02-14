@@ -10,16 +10,16 @@ import Header from '../../components/Header'
 import { push } from 'connected-react-router'
 import { routes } from '../Router'
 
-// TODO: TURN THIS INTO A HOOK
 class Signup extends Component {
   constructor(props){
     super(props)
+
+    this.fileInput = React.createRef()
+
     this.state = {
       name: '',
       email: '',
       password: '',
-      birthday: '',
-      photo: ''
     }
     
   }
@@ -28,28 +28,39 @@ class Signup extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  handleDate = (e) => {
-    this.setState({birthday: e.target.value})
-  }
-
-  // TODO: upload photo file to cloud storage
   submitNormalSignup = async (e) => {
     e.preventDefault()
 
-    const { name, email, password, birthday, photo } = this.state
-    const { saveUser } = this.props
+    const createdPhotoURL = await this.uploadFile()
+
+    const { name, email, password } = this.state
+    const { saveUser, birthdate } = this.props
 
     try {
       const result = await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
       
-      saveUser(name, email, password, birthday, photo, result.user.uid)
+      saveUser(name, email, password, birthdate, createdPhotoURL, result.user.uid)
     } catch (err) {
       console.log(err)
     }
+
+    console.log(birthdate)
   }
 
   returnToHome = () => {
     this.props.returnToHome()
+  }
+
+  uploadFile = async () => {
+    const storageRef = firebase.storage().ref()
+  
+    const newFileRef = storageRef.child(this.fileInput.current.files[0].name);
+  
+    const uploadResult = await newFileRef.put(this.fileInput.current.files[0]).catch(e => console.log('ERRO NO UPLOAD', e))
+  
+    const downloadUrl = await uploadResult.ref.getDownloadURL()
+  
+    return downloadUrl
   }
 
   render() {
@@ -63,8 +74,7 @@ class Signup extends Component {
           formMapper={signupWithEmailAndPasswordForm}
           formMapValue={this.state[signupWithEmailAndPasswordForm.state]}
           onChangeMapFunc={this.handleInputInfo}
-          // dateValue={this.state.birthday}
-          // onChangeDate={this.handleDate}
+          ref={this.fileInput}
         />
         </StyledFormWrapper>
       </PageWrapper>
@@ -72,24 +82,28 @@ class Signup extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  birthdate: state.dateForm.birthdate
+})
+
 
 const mapDispatchToProps = (dispatch) => ({
   saveUser: (
     name, 
     email, 
     password, 
-    birthday, 
+    birthdate, 
     photo, 
     id
   ) => dispatch(signup(
     name, 
     email, 
     password, 
-    birthday, 
+    birthdate, 
     photo, 
     id
   )),
   returnToHome: () => dispatch(push(routes.root))
 })
 
-export default connect(null, mapDispatchToProps)(Signup)
+export default connect(mapStateToProps, mapDispatchToProps)(Signup)

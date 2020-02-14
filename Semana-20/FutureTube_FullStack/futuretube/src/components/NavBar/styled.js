@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Toolbar, IconButton } from '@material-ui/core'
 
 export const StyledToolbar = styled(Toolbar)`
-  display: flex;
+  /* display: flex; */
 `
 
 export const StyledEndIconButton = styled(IconButton)`

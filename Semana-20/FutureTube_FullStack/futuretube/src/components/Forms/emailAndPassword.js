@@ -44,20 +44,19 @@ export const signupWithEmailAndPasswordForm = [
     placeholder: "Password"
   },
   {
-    name: "birthday",
+    name: "birthdate",
     type: "date",
     variant: "standard",
     required: true,
-    state: "birthday",
-    placeholder: "Birthday"
+    state: "birthdate",
+    placeholder: "Birthdate"
   },
   {
     name: "photo",
     type: "file",
     variant: "standard",
     required: true,
-    state: "photo",
-    // placeholder: "Photo"
+    state: "photo", 
   }
 ]
 

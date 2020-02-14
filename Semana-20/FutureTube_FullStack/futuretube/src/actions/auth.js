@@ -8,7 +8,7 @@ export const signup = (
   name, 
   email, 
   password, 
-  birthday, 
+  birthdate, 
   photo, 
   id
 ) => async (dispatch) => {
@@ -17,7 +17,7 @@ export const signup = (
       name, 
       email, 
       password, 
-      birthday, 
+      birthdate, 
       photo, 
       id  
     }

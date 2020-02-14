@@ -1,5 +1,6 @@
 import * as admin from 'firebase-admin'
 
+
 export class FirebaseAuthService {
   async signUp(email: string, password: string): Promise<any> {
     try {

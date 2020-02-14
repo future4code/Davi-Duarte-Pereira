@@ -15,6 +15,10 @@ class Home extends Component {
     this.props.goToUploads()
   }
 
+  goToDeleteVideo = () => {
+    this.props.goToDeleteVideo()
+  }
+
   logout = () => {
     firebase.auth().signOut()
   }
@@ -22,8 +26,11 @@ class Home extends Component {
   render() {
     return (
       <PageWrapper>
-        <NavBar onClickLogout={this.logout} />
-        <button onClick={this.goToUploads}>Go to uploads</button>
+        <NavBar
+         onClickLogout={this.logout}
+         onClickToGoToUpload={this.goToUploads}
+         onClickToGoToDelete={this.goToDeleteVideo}
+        />
         <VideosWrapper>
           {mockVideos.map((video) => {
             return(
@@ -37,7 +44,8 @@ class Home extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  goToUploads: () => dispatch(push(routes.uploadVideo))
+  goToUploads: () => dispatch(push(routes.uploadVideo)),
+  goToDeleteVideo: () => dispatch(push(routes.deleteVideo))
 })
 
 export default connect(null, mapDispatchToProps)(Home)
