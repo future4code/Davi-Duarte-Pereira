@@ -1,0 +1,12 @@
+Exercício 1: complexidade O(n)
+Exercício 2: complexidade O(n)
+Exercício 3: complexidade O(1)
+Exercício 4: complexidade O(2n)
+
+
+Ordem de eficiência:
+1 - Exercício 3
+2 e 3 (não importa muito a ordem) - Exercícios 1 e 2
+4 - Exercício 4
+ 
+
